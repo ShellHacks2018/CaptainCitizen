@@ -1,8 +1,6 @@
 'use strict';
 var envs = require('./env.js');
 
-console.log(envs);
-
 module.exports = {
   db: {
     url: envs.db_url,
