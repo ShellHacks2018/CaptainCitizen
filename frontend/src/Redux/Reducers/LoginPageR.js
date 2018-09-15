@@ -1,20 +1,17 @@
 const LoginInitState = {
-  username: '',
-  password: '',
-  authenticated: ''
+  email: '',
+  password: ''
 }
 
-function LoginPageReducer (state = LoginInitState, action) {
+function LoginPageR (state = LoginInitState, action) {
   switch (action.type) {
-    case 'UPDATE_USERNAME':
-      return {...state, username: action.username}
+    case 'GET_EMAIL':
+      return { ...state, email: action.val }
     case 'GET_PASSWORD':
-      return {...state, password: action.password}
-    case 'USER_AUTHENTICATED':
-      return {...state, authenticated: action.authenticated}
+      return { ...state, password: action.val }
     default:
       return state
   }
 }
 
-export default LoginPageReducer
+export default LoginPageR

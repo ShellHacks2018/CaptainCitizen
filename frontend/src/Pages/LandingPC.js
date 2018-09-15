@@ -2,42 +2,58 @@ import React, { Component } from 'react'
 import LandingPV from './LandingPV'
 import {connect} from 'react-redux'
 
-import {updateUsername, updatePassword} from '../Redux/Actions/LogInAction'
+import authA from '../Redux/Actions/authA';
 
 class LandingPC extends Component {
 
-  updateUsername = event => {
-    this.props.updateUsername(event.target.value)
+  updateEmail = event => {
+    this.props.updateEmail(event.target.value)
   }
   updatePassword = event => {
     this.props.updatePassword(event.target.value)
   }
 
+  signInSubmit = () => {
+    let data = {
+      'email': this.props.email,
+      'password': this.props.password
+    }
+    this.props.authFn.login(data);
+  }
+
+  createSubmit = () => {
+    let data = {
+      'username': this.props.email,
+      'email': this.props.email,
+      'password': this.props.password
+    }
+    this.props.authFn.register(data);
+  }
 
   render () {
     return (
-      <div>
-        <LandingPV
-          updateUsername={this.updateUsername}
-          updatePassword={this.updatePassword} />
-      </div>
+      <LandingPV
+        updateEmail={this.updateEmail}
+        updatePassword={this.updatePassword}
+        signInSubmit={this.signInSubmit}
+        createSubmit={this.createSubmit} />
     )
   }
 }
 
-const mapStateToProps = state => {
+const landingPageState = state => {
   return {
-    username: state.LoginPageR.username,
-    password: state.LoginPageR.password,
-    authenticated: state.LoginPageR.authenticated
+    email: state.LoginPageR.email,
+    password: state.LoginPageR.password
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const landingPageAction = dispatch => {
   return {
-    updateUsername: (val) => dispatch(updateUsername(val)),
-    updatePassword: (val) => dispatch(updatePassword(val))
+    updateEmail: (val) => { dispatch({type: 'GET_EMAIL', val: val}) },
+    updatePassword: (val) => { dispatch({type: 'GET_PASSWORD', val: val}) },
+    authFn: authA(dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LandingPC)
+export default connect(landingPageState, landingPageAction)(LandingPC)
