@@ -25,6 +25,6 @@ module.exports = {
     connector: 'loopback-component-storage',
     provider: 'amazon',
     key: envs.aws_key,
-    keyId: envs.aws_keyid
-  }
+    keyId: envs.aws_keyid,
+  },
 };
