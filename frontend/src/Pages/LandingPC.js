@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LandingPV from './LandingPV'
 import {connect} from 'react-redux'
+import { Redirect } from 'react-router-dom';
 
 import authA from '../Redux/Actions/authA';
 
@@ -31,20 +32,26 @@ class LandingPC extends Component {
   }
 
   render () {
-    return (
-      <LandingPV
-        updateEmail={this.updateEmail}
-        updatePassword={this.updatePassword}
-        signInSubmit={this.signInSubmit}
-        createSubmit={this.createSubmit} />
-    )
+    if(this.props.auth){
+      return <Redirect to="/home" />
+    }
+    else{
+      return (
+        <LandingPV
+          updateEmail={this.updateEmail}
+          updatePassword={this.updatePassword}
+          signInSubmit={this.signInSubmit}
+          createSubmit={this.createSubmit} />
+      )
+      }
   }
 }
 
 const landingPageState = state => {
   return {
     email: state.LoginPageR.email,
-    password: state.LoginPageR.password
+    password: state.LoginPageR.password,
+    auth: state.authR.auth
   }
 }
 
