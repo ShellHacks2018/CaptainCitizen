@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+import LandingPV from './LandingPV'
+
 class LandingPC extends Component {
   render () {
     return (
       <div>
-        <h2>Whats up Guys</h2>
+        <LandingPV />
       </div>
     )
   }
