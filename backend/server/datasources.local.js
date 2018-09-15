@@ -10,5 +10,5 @@ module.exports = {
     connector: 'mongodb',
     username: envs.db_user,
     password: envs.db_pw,
-  }
+  },
 };
