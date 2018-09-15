@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
-import LoginPage from './LoginPage'
+import LoginPageR from './LoginPageR'
 
 const rootReducer = combineReducers({
-  LoginPage
+  LoginPageR
 })
 
 export default rootReducer
