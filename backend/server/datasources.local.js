@@ -11,4 +11,11 @@ module.exports = {
     username: envs.db_user,
     password: envs.db_pw,
   },
+  s3: {
+    name: "s3",
+    connector: "loopback-component-storage",
+    provider: "amazon",
+    key: envs.aws_key,
+    keyId: envs.aws_keyid
+  }
 };
