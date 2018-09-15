@@ -1,13 +1,16 @@
 'use strict';
+var envs = require('./env.js');
+
+console.log(envs);
 
 module.exports = {
   db: {
-    url: process.env.DB_URL,
+    url: envs.db_url,
     port: 27017,
     database: 'db',
     name: 'db',
     connector: 'mongodb',
-    username: process.env.DB_USER,
-    password: process.env.DB_PW,
+    username: envs.db_user,
+    password: envs.db_pw,
   }
 };
