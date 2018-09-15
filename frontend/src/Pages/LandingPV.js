@@ -29,6 +29,19 @@ const styles = {
   button: {
     marginLeft: '3%',
     marginRight: '3%'
+  },
+  header: {
+    paddingTop: '8%'
+  },
+  root: {
+    color: 'red',
+    fontSize: '15px'
+  },
+  buttonCSS: {
+    margin: '2%'
+  },
+  buttonContainer: {
+    marginTop: '20px'
   }
 }
 
@@ -40,14 +53,14 @@ const LandingPV = (props) => {
         <CardActionArea>
           <CardMedia component='img' className={classes.media} image={CaptinAmerica} title='Captin America' />
           <CardContent>
-            <form className={classes.container} noValidate autoComplete='off'>
-              <TextField className={classes.textField} onChange={props.updateUsername} id='username' label='Username' margin='normal' />
-              <TextField className={classes.textField} onChange={props.updatePassword} id='password' label='Password' margin='normal' type='password' />
+            <form className={classes.root}>
+              <TextField id='email' label='Email' margin='normal' onChange={props.updateEmail} fullWidth />
+              <TextField id='password-input' label='Password' type='password' onChange={props.updatePassword} autoComplete='current-password' margin='normal' fullWidth />
+              <div className={classes.buttonContainer}>
+                <Button variant='contained' className={classes.buttonCSS} onClick={props.signInSubmit}> Sign In </Button>
+                <Button variant='contained' className={classes.buttonCSS} onClick={props.createSubmit}> Create Account </Button>
+              </div>
             </form>
-            <div className={classes.ButtonContainer}>
-              <Button variant='outlined' className={classes.button}>Sign In</Button>
-              <Button variant='outlined' className={classes.button}>Create Account</Button>
-            </div>
           </CardContent>
         </CardActionArea>
       </Card>
