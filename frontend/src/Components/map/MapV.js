@@ -6,9 +6,10 @@ import Button from '@material-ui/core/Button'
 const MapV = (props) => {
 	
 	const MapItems = props.mapItems;
+	// console.log(JSON.stringify(MapItems))
   return(		
 		<div>
-			{/* {console.log(JSON.stringify(MapItems))} */}
+			{console.log(JSON.stringify(MapItems))}
 			<Map google={props.google}
 					onClick={props.onMapClicked}
 					center = {props.currentLocation}>
@@ -18,9 +19,9 @@ const MapV = (props) => {
 						return(
 							<Marker onClick={props.onMarkerClicked}
 									name={data.title} 
-									image_url={data.image_url}
+									image_url={data.image}
 									rating={data.rating}
-									userItem={data.userItem}
+									userItem={data.user_item}
 									position = {data.location}/>  	
 							)
 						}						

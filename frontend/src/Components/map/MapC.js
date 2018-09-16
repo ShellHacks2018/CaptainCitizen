@@ -1,12 +1,52 @@
 import React, {Component} from 'react'
 import MapV from './MapV.js'
 import {connect} from 'react-redux'
-import itemA from '../../redux/actions/itemA.js';
+
+
+var dummyData = [
+	{ 
+		"location": {"lat": 25.756085, "lng": -80.376185},
+		"title": "Temp A",	
+		"image": "https://news.fiu.edu/wp-content/uploads/33361133815_4930957805_z-1-1.jpg",
+		"created_by": "1",
+		"user_item": false,
+		"type": "issue",
+		"tags": ["bioharzard","infrastructure"],
+		"created_date": "2018-09-15T21:28:47.324Z",
+		"rating": 1,
+	},
+	{ 
+		"location": {"lat": 25.759794, "lng": -80.371109},
+		"title": "Temp B",	
+		"image": "https://news.fiu.edu/wp-content/uploads/33361133815_4930957805_z-1-1.jpg",
+		"created_by": "2",
+		"user_item": false,
+		"type": "issue",
+		"tags": ["illegal_dumping"],
+		"created_date": "2018-09-15T21:28:47.324Z",
+		"rating": 1,
+	},
+	{ 
+		"location": {"lat": 25.756854, "lng": -80.371467},
+		"title": "Temp C",	
+		"image": "https://news.fiu.edu/wp-content/uploads/33361133815_4930957805_z-1-1.jpg",
+		"created_by": "3",
+		"user_item": false,
+		"type": "post",
+		"tags": ["food","place"],
+		"created_date": "2018-07-15T21:28:47.324Z",
+		"rating": 1,
+	},
+]
+
+
 
 class MapC extends Component{
+	data = []
 	constructor(props){
     super(props);
-    const {lat, lng} = this.props.initialCenter;
+		const {lat, lng} = this.props.initialCenter;
+		
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
@@ -14,8 +54,10 @@ class MapC extends Component{
       currentLocation: {
         lat: lat,
         lng: lng
-      }
-    }
+			}
+
+		}
+
 	}
 	
 
@@ -53,8 +95,20 @@ class MapC extends Component{
 		}  
 	}
 
+	updateUserItem = () => {
+		this.data = dummyData.map((item) => {
+			if(item.created_by === localStorage.getItem('userId')){
+				return {...item, user_item: true }
+			}
+			return item
+		})
+		
+	}
+
 	componentDidMount(){
-		this.props.setUserItem.setMapItems();
+		// this.props.setUserItem.setMapItems();
+		this.updateUserItem();
+		// console.log(dummyData)
 	}
 
   render(){
@@ -71,7 +125,7 @@ class MapC extends Component{
 							selectedPlaceName={this.state.selectedPlace.name}
 							selectedPlaceImg={this.state.selectedPlace.image_url}
 							selectedPlaceRating={this.state.selectedPlace.rating}
-							mapItems={this.props.mapItems}
+							mapItems={this.data}
 							userItem={this.state.selectedPlace.userItem} />
 			</div>
 		)
@@ -89,13 +143,13 @@ MapC.defaultProps = {
 
 const mapStateToProps = state => {
 	return{
-		mapItems: state.itemR.dummyMapItems
+		// mapItems: state.itemR.dummyMapItems
 	}
 }
 
 const mapActionToProps = dispatch =>{
 	return{
-		setUserItem: itemA(dispatch)
+		// setUserItem: itemA(dispatch)
 	}
 }
 
