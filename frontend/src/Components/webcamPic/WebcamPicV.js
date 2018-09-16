@@ -1,5 +1,6 @@
 import React from 'react';
 import Webcam from 'react-webcam';
+import Button from '@material-ui/core/Button';
 
 const WebcamPicV = (props) => {
   if(props.image)
@@ -7,7 +8,7 @@ const WebcamPicV = (props) => {
     return(
       <div>
           <img alt="not available" src={props.image} />
-          <button onClick={props.keepImage}>Keep?</button>
+          <Button onClick={props.keepImage}>Keep?</Button>
       </div>
     ) 
   }
@@ -22,7 +23,7 @@ const WebcamPicV = (props) => {
             width={350}
             videoConstraints={props.videoConstraints}
           />
-          <button onClick={props.capture}>Capture photo</button>
+          <Button onClick={props.capture}>Capture photo</Button>
       </div>
     ) 
   }

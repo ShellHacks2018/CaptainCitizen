@@ -13,8 +13,8 @@ const GetImageV = (props) => {
       {
         return(
           <div>
-            <img alt="not available" src={props.upload_image} />
-            <button >Keep?</button>
+            <img alt="Your pic should be here!!!" src={props.upload_image} />
+            {/* <button >Keep?</button> */}
           </div>
         );
       }
@@ -22,8 +22,8 @@ const GetImageV = (props) => {
       {
         return(
           <div>
-            <img alt="not available" src={props.webcam_image} />
-            <button >Keep?</button>
+            <img alt="Your pic should be here!!!" src={props.webcam_image} />
+            {/* <button >Keep?</button> */}
           </div>
         );
       }
@@ -45,8 +45,7 @@ const GetImageV = (props) => {
         return(
           <div>
             <Paper>
-            <WebcamPicC getImage={props.getImage} webcamImageCB={props.webcamImageCB} />
-            <Button color="primary" onClick={props.setWebcamFileHandler}> Set </Button>
+            <WebcamPicC getImageForm={props.getImageForm} webcamImageCB={props.webcamImageCB} />
             <Button color="secondary" onClick={props.viewTypeCancel}> Cancel </Button>
             </Paper>
           </div>
