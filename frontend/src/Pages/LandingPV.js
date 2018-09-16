@@ -16,6 +16,9 @@ const styles = {
     margin: '25% 25%',
     maxWidth: 345
   },
+  '@media (min-width:)': {
+
+  },
   media: {
     objectFit: 'cover',
     height: '100%',
@@ -49,7 +52,7 @@ const styles = {
 const LandingPV = (props) => {
   const {classes} = props
   return (
-    <div>
+    <div className={classes.mixCSS}>
       <Card className={classes.card}>
         <CardActionArea>
           <CardMedia component='img' className={classes.media} image={merica} title='Captin America' />
