@@ -134,16 +134,18 @@ class MapC extends Component{
 
 	componentDidMount(prevProp){
 		this.updateUserItem();
+		// this.filterMapItem();
 		// console.log(this.filterMapItems)
 	}
 
-	componentDidUpdate(){
-		this.filterMapItem();
-	}
+	// componentDidUpdate(){
+	// 	this.filterMapItem();
+	// }
 
 
   render(){
 		this.getCurrentPosition();
+		this.filterMapItem();
 		return(
 			<div>
 				<MapV google={this.props.google}
@@ -167,8 +169,8 @@ MapC.defaultProps = {
   zoom: 16,
   // San Francisco, by default
   initialCenter: {
-    lat: 25.756085,
-    lng: -80.376185
+    lat: 25.759794,
+    lng: -80.371109
   },
 }
 
