@@ -12,12 +12,15 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 
 const styles = {
-  card: {
-    margin: '25% 25%',
-    maxWidth: 345
+  mixCSS: {
+    marginLeft: '40%',
+    marginRight: '25%',
+    marginTop: '25%',
+    marginBottom: '25%'
   },
-  '@media (min-width:)': {
-
+  card: {
+    minWidth: '300px',
+    maxWidth: '345px'
   },
   media: {
     objectFit: 'cover',
@@ -46,6 +49,17 @@ const styles = {
   },
   buttonContainer: {
     marginTop: '20px'
+  },
+  '@media (max-width: 600px)': {
+    mixCSS: {
+      marginLeft: '30px',
+      marginRight: '30px',
+      marginTop: '25%'
+    },
+    card: {
+      minWidth: '300px',
+      maxWidth: '345px'
+    }
   }
 }
 
