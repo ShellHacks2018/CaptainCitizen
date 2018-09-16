@@ -70,6 +70,10 @@ class AddItemC extends Component {
                   });
   };
 
+  typeChangeCB = (event) => {
+    this.setState({ selectedType: event.target.value });
+  }
+  
   render () 
   {
     let tags = ''
