@@ -8,7 +8,7 @@ var dummyData = [
 	{
 		"location": {"lat": 25.756085, "lng": -80.376185},
 		"title": "Temp A",
-		"image": "a_issue_biohazard_01_01_2018_01_02_01.jpg",
+		"image": "https://drive.google.com/open?id=1jU4THx6ILA7UdAGkrgQeS0_EtRjQncmU",
 		"created_by": "1",
 		"user_item": false,
 		"type": "issue",
@@ -19,7 +19,7 @@ var dummyData = [
 	{
 		"location": {"lat": 25.759794, "lng": -80.371109},
 		"title": "Temp B",
-		"image": "a_issue_biohazard_01_01_2018_01_02_01.jpg",
+		"image": "https://drive.google.com/open?id=1ufkmaLG0EvRa2icT7-bTWvpe33sSvHIL",
 		"created_by": "2",
 		"user_item": false,
 		"type": "issue",
@@ -30,7 +30,7 @@ var dummyData = [
 	{
 		"location": {"lat": 25.756854, "lng": -80.371467},
 		"title": "Temp C",
-		"image": "a_post_food_01_03_2018_02_01_01.jpg",
+		"image": "https://drive.google.com/open?id=18EG_0tApdT95Kc-QvtBZHSfkEBeNpoKt",
 		"created_by": "3",
 		"user_item": false,
 		"type": "post",
