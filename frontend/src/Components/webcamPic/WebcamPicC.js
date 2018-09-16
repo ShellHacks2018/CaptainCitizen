@@ -2,8 +2,12 @@ import React, {Component} from 'react'
 import WebcamPicV from './WebcamPicV';
 
 export default class WebcamPicC extends Component{
-  state = {
+  constructor(props){
+    super(props)
+
+    this.state = {
     image: null
+    }
   }
 
   setRef = webcam => {
@@ -19,8 +23,8 @@ export default class WebcamPicC extends Component{
     this.setState({pic: null})
   }
 
-  keepImage = () => {
-    console.log('OK!')
+  keepImage = (img) => {
+    this.props.webcamImageCB(img)
   }
 
   render() {
@@ -36,7 +40,7 @@ export default class WebcamPicC extends Component{
           setRef={ this.setRef }
           videoConstraints={ videoConstraints }
           capture={this.capture}
-          keep={this.keep}
+          keepImage={this.keepImage}
           image={this.state.image}
           />
       </div>

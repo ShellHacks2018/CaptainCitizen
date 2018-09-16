@@ -7,7 +7,7 @@ const WebcamPicV = (props) => {
     return(
       <div>
           <img alt="not available" src={props.image} />
-          <button onClick={props.keep}>Keep?</button>
+          <button onClick={props.keepImage}>Keep?</button>
       </div>
     ) 
   }

@@ -9,14 +9,32 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
 const GetImageV = (props) => {
-      if (props.viewType === 'upload')
+      if (props.viewType === 'display_upload')
+      {
+        return(
+          <div>
+            <img alt="not available" src={props.upload_image} />
+            <button >Keep?</button>
+          </div>
+        );
+      }
+      else if (props.viewType === 'display_webcam')
+      {
+        return(
+          <div>
+            <img alt="not available" src={props.webcam_image} />
+            <button >Keep?</button>
+          </div>
+        );
+      }
+      else if (props.viewType === 'upload')
       {
         return(
           <div>  
             <Paper>         
             <InputLabel>Select File</InputLabel>
-            <Input color="primary" type='file' onChange={props.uploadSelected}/>
-            <Button color="primary"> Upload </Button>
+            <Input color="primary" type='file' onChange={props.fileSelectedCB}/>
+            <Button color="primary" onClick={props.setUploadFileHandler}> Set </Button>
             <Button color="secondary" onClick={props.viewTypeCancel}> Cancel </Button>
             </Paper>
           </div>
@@ -27,7 +45,8 @@ const GetImageV = (props) => {
         return(
           <div>
             <Paper>
-            <WebcamPicC getImage={props.getImage} />
+            <WebcamPicC getImage={props.getImage} webcamImageCB={props.webcamImageCB} />
+            <Button color="primary" onClick={props.setWebcamFileHandler}> Set </Button>
             <Button color="secondary" onClick={props.viewTypeCancel}> Cancel </Button>
             </Paper>
           </div>
