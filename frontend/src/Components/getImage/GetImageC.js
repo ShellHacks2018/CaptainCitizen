@@ -10,24 +10,40 @@ class GetImageC extends Component {
     super(props)
     this.state = {
       viewType: '',
-      image: ''
+      upload_image: '',
+      webcam_image: ''
     }
   }
 
   /* Image selected by user */
   fileSelectedCB = (event) => {
-    this.setState({image: event.target.files[0]} )
+    // this.setState({image: event.target.files[0]} )
+    var reader = new FileReader();
+    // reader.onloadend = () => {
+    //   console.log('RESULT', reader.result)
+    // }
+    reader.readAsDataURL(event.target.files[0]);
   }
 
-  selectFileHandler = () =>{
-    console.log("uploading " + this.state.image.name)
-    this.setState({viewType: 'display'})
+  setUploadFileHandler = () =>{
+    console.log("uploading " + this.state.upload_image.name)
+    this.setState({viewType: 'display_upload'})
     // let form = new FormData()
-    // form.append('image', this.state.image, this.state.image.name)
+    // form.append('image', this.state.upload_image, this.state.upload_image.name)
     // axios.post(upload_url, form).then((res)=>{
     //   console.log(res.body)
     // }).catch((err)=>{console.log(err)})
     console.log('uploaded!')
+  }
+
+  // Set image 
+  webcamImageCB = (img) => 
+  {
+    this.setState({webcam_image: img})
+  }
+
+  setWebcamFileHandler = () => {
+    this.setState({viewType: 'display_webcam'})
   }
 
   viewTypeCancel = () => {
@@ -47,12 +63,14 @@ class GetImageC extends Component {
       <div>
         <GetImageV 
           fileSelectedCB={this.fileSelectedCB}
+          webcamImageCB={this.webcamImageCB}
           selectFileHandler={this.selectFileHandler}
           viewTypeCancel={this.viewTypeCancel}
           viewTypeUpload={this.viewTypeUpload}
           viewTypeCamera={this.viewTypeCamera}
           viewType={this.state.viewType}
-          image={this.image}/>
+          upload_image={this.upload_image}
+          webcam_image={this.webcam_image}/>
       </div>
     )
   }
