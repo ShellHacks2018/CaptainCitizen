@@ -1,13 +1,13 @@
 const initState  = {
-    issue: false,
-    post: true,
+		type : "post",
+		isfilter: false,
     infrastructure: false,
     illegal_dumping: false,
     biohazard: false,
-    event: false,
-    food: false,
-    place: false,
-    cultural: false
+    event: true,
+    food: true,
+    place: true,
+    cultural: true
  }
 
 function FilterR (state = initState, action){
