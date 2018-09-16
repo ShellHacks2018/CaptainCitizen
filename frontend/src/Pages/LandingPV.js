@@ -1,5 +1,6 @@
 import React from 'react'
-import CaptinAmerica from '../Assets/captinAmerica.jpg'
+// import CaptinAmerica from '../Assets/captinAmerica.jpg'
+import merica from '../Assets/merica.jpg'
 
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -51,7 +52,7 @@ const LandingPV = (props) => {
     <div>
       <Card className={classes.card}>
         <CardActionArea>
-          <CardMedia component='img' className={classes.media} image={CaptinAmerica} title='Captin America' />
+          <CardMedia component='img' className={classes.media} image={merica} title='Captin America' />
           <CardContent>
             <form className={classes.root}>
               <TextField id='email' label='Email' margin='normal' onChange={props.updateEmail} fullWidth />
