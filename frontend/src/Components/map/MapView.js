@@ -69,7 +69,6 @@ const MapView = (props) => {
             <h1 className={classes.titleCSS}>{props.selectedPlaceName}</h1>
             <p>{console.log(props.selectedPlaceImg)}</p>
           </div>
-
           <CardMedia component='img' className={classes.imageCSS} image={props.selectedPlaceImg.src} title='Class PG6' />
           <div className={classes.containerCSS}>
             <Button variant='contained' className={classes.innerButtonCSS} > Cultural </Button>
