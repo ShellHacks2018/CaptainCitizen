@@ -40,7 +40,6 @@ var dummyData = [
 ]
 
 
-
 class MapC extends Component{
 	data = []
 	constructor(props){
@@ -106,9 +105,8 @@ class MapC extends Component{
 	}
 
 	componentDidMount(){
-		// this.props.setUserItem.setMapItems();
 		this.updateUserItem();
-		// console.log(dummyData)
+		// console.log(this.props.filter)
 	}
 
   render(){
@@ -144,6 +142,8 @@ MapC.defaultProps = {
 const mapStateToProps = state => {
 	return{
 		// mapItems: state.itemR.dummyMapItems
+		filter: state.FilterR
+		
 	}
 }
 
