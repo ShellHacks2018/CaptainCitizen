@@ -143,6 +143,7 @@ const mapStateToProps = state => {
 	return{
 		// mapItems: state.itemR.dummyMapItems
 		filter: state.FilterR
+		
 	}
 }
 

@@ -4,6 +4,7 @@ const FilterA = (dispatch) => {
         typeToggle: () => {
             dispatch({type: 'TYPE_TOGGLE'})
         }
+        
     }
 }
 
