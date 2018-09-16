@@ -57,7 +57,7 @@ const MapView = (props) => {
             <Marker
               onClick={props.onMarkerClicked}
               name={data.title}
-              image_url={data.image}
+              image={data.image}
               rating={data.rating}
               userItem={data.user_item}
               position={data.location} />
@@ -66,9 +66,10 @@ const MapView = (props) => {
         <InfoWindow marker={props.activeMarker} visible={props.showingInfoWindow}>
           <div>
             <h1 className={classes.titleCSS}>{props.selectedPlaceName}</h1>
+            <p>{console.log(props.selectedPlaceImg)}</p>
           </div>
 
-          <CardMedia component='img' className={classes.imageCSS} image={props.selectedPlaceImg} title='Class PG6' />
+          <CardMedia component='img' className={classes.imageCSS} image={props.selectedPlaceImg.src} title='Class PG6' />
           <div className={classes.containerCSS}>
             <Button variant='contained' className={classes.innerButtonCSS} > Cultural </Button>
             <Button variant='contained' className={classes.innerButtonCSS} > Food </Button>

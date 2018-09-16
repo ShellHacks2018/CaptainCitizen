@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import MapV from './MapView.js'
 import {connect} from 'react-redux'
+import GetImageA from './../../Redux/Actions/GetImageA'
 
 
 var dummyData = [
@@ -43,6 +44,7 @@ var dummyData = [
 class MapC extends Component{
 	data = []
 	filterMapItems = []
+	imageData = new Image()
 	constructor(props){
     super(props);
 		const {lat, lng} = this.props.initialCenter;
@@ -59,12 +61,18 @@ class MapC extends Component{
 	}
 
 
-	onMarkerClicked = (props, marker, e) =>
-	this.setState({
-		selectedPlace: props,
-		activeMarker: marker,
-		showingInfoWindow: true
-	});
+	onMarkerClicked = (props, marker, e) => {
+		this.setState({
+			selectedPlace: props,
+			activeMarker: marker,
+			showingInfoWindow: true
+		});
+		// console.log(JSON.stringify(this.state.selectedPlace.image))
+		this.props.requestImg.getImg(this.state.selectedPlace.image);
+		this.imageData.src=this.props.imgState.img
+		// console.log("response: "+JSON.stringify(this.props.imgState))
+	}
+	
 
 	onMapClicked = (props) => {
 		if (this.state.showingInfoWindow) {
@@ -107,7 +115,7 @@ class MapC extends Component{
 		this.filterMapItems = dummyData.filter((item) => {
 			return this.props.filter.type === item.type
 		})
-		console.log("filterMapItems:" + JSON.stringify(this.filterMapItems))
+		// console.log("filterMapItems:" + JSON.stringify(this.filterMapItems))
 		this.filterMapItems = this.filterMapItems.filter((item) => {
 			switch(item.tags){
 				case 'infrastructure':
@@ -129,19 +137,16 @@ class MapC extends Component{
 				
 			}
 		})
-		console.log("filterMapItems:" + JSON.stringify(this.filterMapItems))
+		// console.log("filterMapItems:" + JSON.stringify(this.filterMapItems))
 	}
+
+	
 
 	componentDidMount(prevProp){
 		this.updateUserItem();
 		// this.filterMapItem();
-		// console.log(this.filterMapItems)
+		
 	}
-
-	// componentDidUpdate(){
-	// 	this.filterMapItem();
-	// }
-
 
   render(){
 		this.getCurrentPosition();
@@ -156,7 +161,7 @@ class MapC extends Component{
 							activeMarker={this.state.activeMarker}
 							showingInfoWindow={this.state.showingInfoWindow}
 							selectedPlaceName={this.state.selectedPlace.name}
-							selectedPlaceImg={this.state.selectedPlace.image_url}
+							selectedPlaceImg={this.imageData}
 							selectedPlaceRating={this.state.selectedPlace.rating}
 							mapItems={this.filterMapItems}
 							userItem={this.state.selectedPlace.userItem} />
@@ -177,10 +182,16 @@ MapC.defaultProps = {
 const mapStateToProps = state => {
 	return{
 		// mapItems: state.itemR.dummyMapItems
-		filter: state.FilterR
+		filter: state.FilterR,
+		imgState: state.ImageR
 		
 	}
 }
 
+const mapActionToProps = dispatch => {
+	return{
+		requestImg: GetImageA(dispatch)
+	}
+}
 
-export default connect(mapStateToProps)(MapC)
+export default connect(mapStateToProps,mapActionToProps)(MapC)
