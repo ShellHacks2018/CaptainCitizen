@@ -9,14 +9,23 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
 const GetImageV = (props) => {
-      if (props.viewType === 'upload')
+      if (props.viewType === 'display')
+      {
+        return(
+          <div>
+            <img alt="not available" src={props.image} />
+            <button >Keep?</button>
+          </div>
+        );
+      }
+      else if (props.viewType === 'upload')
       {
         return(
           <div>  
             <Paper>         
             <InputLabel>Select File</InputLabel>
-            <Input color="primary" type='file' onChange={props.uploadSelected}/>
-            <Button color="primary"> Upload </Button>
+            <Input color="primary" type='file' onChange={props.fileSelectedCB}/>
+            <Button color="primary" onClick={props.selectFileHandler}> Set </Button>
             <Button color="secondary" onClick={props.viewTypeCancel}> Cancel </Button>
             </Paper>
           </div>

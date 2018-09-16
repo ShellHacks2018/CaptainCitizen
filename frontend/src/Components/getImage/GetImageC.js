@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {upload_url} from '../../config.js'
+import axios from 'axios'
 
 /* View */
 import GetImageV from './GetImageV'
@@ -8,14 +10,24 @@ class GetImageC extends Component {
     super(props)
     this.state = {
       viewType: '',
-      pic: ''
+      image: ''
     }
   }
 
   /* Image selected by user */
-  uploadSelected = (event) => {
-    this.props.getImage(this.state.pic)
-    console.log(event)
+  fileSelectedCB = (event) => {
+    this.setState({image: event.target.files[0]} )
+  }
+
+  selectFileHandler = () =>{
+    console.log("uploading " + this.state.image.name)
+    this.setState({viewType: 'display'})
+    // let form = new FormData()
+    // form.append('image', this.state.image, this.state.image.name)
+    // axios.post(upload_url, form).then((res)=>{
+    //   console.log(res.body)
+    // }).catch((err)=>{console.log(err)})
+    console.log('uploaded!')
   }
 
   viewTypeCancel = () => {
@@ -34,11 +46,13 @@ class GetImageC extends Component {
     return (
       <div>
         <GetImageV 
-          uploadSelected={this.uploadSelected}
+          fileSelectedCB={this.fileSelectedCB}
+          selectFileHandler={this.selectFileHandler}
           viewTypeCancel={this.viewTypeCancel}
           viewTypeUpload={this.viewTypeUpload}
           viewTypeCamera={this.viewTypeCamera}
-          viewType={this.state.viewType}/>
+          viewType={this.state.viewType}
+          image={this.image}/>
       </div>
     )
   }
