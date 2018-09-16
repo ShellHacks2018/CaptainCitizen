@@ -27,7 +27,7 @@ const GetImageV = (props) => {
         return(
           <div>
             <Paper>
-            <WebcamPicC />
+            <WebcamPicC getImage={props.getImage} />
             <Button color="secondary" onClick={props.viewTypeCancel}> Cancel </Button>
             </Paper>
           </div>

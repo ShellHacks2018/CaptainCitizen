@@ -6,6 +6,7 @@ class AddItemC extends Component {
   state = {
     formOpen: false,
     selectedType: 'post',
+    image: '',
     post_tags: {
         event: false,
         food: false,
@@ -18,6 +19,10 @@ class AddItemC extends Component {
         biohazard: false
         }
     }
+
+  getImage = (img) => {
+      this.setState({image: img})
+  }
 
   formOpenCB = () => {
     // Display the form when called by setting state
@@ -76,6 +81,7 @@ class AddItemC extends Component {
         selectedType = {this.state.selectedType}
         tags = {tags}
         checkClicked = {checkClicked}
+        getImage = {this.getImage}
         />
     </div>
     )

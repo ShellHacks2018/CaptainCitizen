@@ -14,6 +14,7 @@ class GetImageC extends Component {
 
   /* Image selected by user */
   uploadSelected = (event) => {
+    props.getImage(this.state.pic)
     console.log(event)
   }
 
