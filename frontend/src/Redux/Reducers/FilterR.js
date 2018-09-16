@@ -1,6 +1,5 @@
 const initState  = {
-		type : "post",
-		isfilter: false,
+	type : "post",	
     infrastructure: false,
     illegal_dumping: false,
     biohazard: false,
@@ -13,7 +12,10 @@ const initState  = {
 function FilterR (state = initState, action){
 	switch(action.type){
 		case 'TYPE_TOGGLE':
-				return { ...state, issue: !state.issue, post: !state.post}
+				return { ...state}
+		case 'TAG_TOGGLE':
+				
+				return { ...state}
 		default:
 				return state
 	}
