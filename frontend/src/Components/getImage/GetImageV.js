@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CamSnapshotC from '../camSnapshot/camSnapshotC'
+import WebcamPicC from '../webcamPic/WebcamPicC'
 import CameraIcon from '@material-ui/icons/CameraAlt';
 import PhotoIcon from '@material-ui/icons/Photo';
 import Paper from '@material-ui/core/Paper';
@@ -27,7 +27,7 @@ const GetImageV = (props) => {
         return(
           <div>
             <Paper>
-            <CamSnapshotC />
+            <WebcamPicC />
             <Button color="secondary" onClick={props.viewTypeCancel}> Cancel </Button>
             </Paper>
           </div>

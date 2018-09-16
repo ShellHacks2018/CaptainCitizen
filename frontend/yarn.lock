@@ -5886,6 +5886,12 @@ react-transition-group@^2.2.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
+react-webcam@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-webcam/-/react-webcam-1.0.4.tgz#5ebaffc9fb63efb7f65e9bb6689b58769c15f8af"
+  dependencies:
+    prop-types "^15.5.8"
+
 react@^16.5.1:
   version "16.5.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.5.1.tgz#8cb8e9f8cdcb4bde41c9a138bfbf907e66132372"

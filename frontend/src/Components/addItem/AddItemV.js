@@ -16,7 +16,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 import { withStyles } from '@material-ui/core/styles'
 
-// import GetImageC from '../getImage/GetImageC';
+import GetImageC from '../getImage/GetImageC';
 
 const styles = theme => ({
     button: {
@@ -55,7 +55,7 @@ const AddItemV = (props) => {
                 Add Picture
             </DialogContentText>
 
-            {/* <GetImageC /> */}
+            <GetImageC />
 
             <TextField
                 autoFocus margin="dense" id="titleTF"
