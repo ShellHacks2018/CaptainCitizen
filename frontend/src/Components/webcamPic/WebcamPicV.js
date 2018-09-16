@@ -1,15 +1,12 @@
 import React from 'react';
 import Webcam from 'react-webcam';
 
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-
 const WebcamPicV = (props) => {
   if(props.image)
   {
     return(
       <div>
-          <img src={props.image} />
+          <img alt="not available" src={props.image} />
           <button onClick={props.keep}>Keep?</button>
       </div>
     ) 

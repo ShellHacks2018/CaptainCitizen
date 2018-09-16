@@ -16,6 +16,9 @@ const styles = {
     margin: '25% 25%',
     maxWidth: 345
   },
+  '@media (min-width:)': {
+    
+  },
   media: {
     objectFit: 'cover',
     height: '100%',

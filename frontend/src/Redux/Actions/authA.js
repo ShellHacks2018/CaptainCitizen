@@ -1,16 +1,15 @@
 import axios from 'axios'
+import {reg_url, login_url} from '../../config.js'
 
 const authA = (dispatch) => {
+  
   return {
     register: (data) => {
-      let url = "http://localhost:3001/api/Users";
-
-      axios.post(url, data).then( (response) => {
+      axios.post(reg_url, data).then( (response) => {
       }).catch((err) => {console.log(err); })
     },
     login: (data) => {
-      let url = 'http://localhost:3001/api/Users/login';
-      axios.post(url, data).then(
+      axios.post(login_url, data).then(
         (res) => {
           console.log(res)
           localStorage.setItem('user', data.email)

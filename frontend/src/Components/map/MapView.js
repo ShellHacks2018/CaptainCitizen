@@ -1,5 +1,5 @@
 import React from 'react'
-import key from '../../config'
+import {gmap_key} from '../../config.js'
 import PropTypes from 'prop-types'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
 
@@ -15,8 +15,13 @@ const styles = {
   container: {
     color: 'red'
   },
-  mapCSS: {
-    height: '80%',
+  titleCSS: {
+    textAlign: 'center'
+  },
+  imageCSS: {
+    marginLeft: '25%',
+    marginRight: '25%',
+    hieght: '50%',
     width: '50%'
   },
   HomeCSS: {
@@ -33,9 +38,7 @@ const styles = {
   containerCSS: {
     marginTop: '10%'
   },
-  titleCSS: {
-    textAlign: 'center'
-  },
+
   ratingCSS: {
     marginLeft: '25%',
     marginRight: '25%',
@@ -48,7 +51,7 @@ const MapView = (props) => {
   const MapItems = props.mapItems
   return (
     <div>
-      <Map style={{margin: '15% 10%', height: '75%', width:'75%'}} google={props.google} onClick={props.onMapClicked} center={props.currentLocation} >
+      <Map style={{margin: '15% 10%', height: '75%', width: '75%'}} google={props.google} onClick={props.onMapClicked} center={props.currentLocation} >
         { MapItems.map(data => {
           return (
             <Marker
@@ -64,7 +67,7 @@ const MapView = (props) => {
           <div>
             <h1 className={classes.titleCSS}>Title Should go here</h1>
           </div>
-          <CardMedia component='img' className={classes.media} image={ClassRoom} title='Class PG6' />
+          <CardMedia component='img' className={classes.imageCSS} image={ClassRoom} title='Class PG6' />
           <div className={classes.containerCSS}>
             <Button variant='contained' className={classes.innerButtonCSS} > Cultural </Button>
             <Button variant='contained' className={classes.innerButtonCSS} > Food </Button>
@@ -84,4 +87,4 @@ MapView.propTypes = {
   initialCenter: PropTypes.object
 }
 
-export default withStyles(styles)(GoogleApiWrapper({ apiKey: key })(MapView))
+export default withStyles(styles)(GoogleApiWrapper({ apiKey: gmap_key })(MapView))
