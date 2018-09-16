@@ -82,17 +82,6 @@ const AddItemV = (props) => {
             </RadioGroup>
           </FormControl>
 
-<<<<<<< HEAD
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={props.formCancelCB} color="primary">
-                Cancel
-            </Button>
-            <Button onClick={props.formCloseCB} color="primary">
-                Submit
-            </Button>
-          </DialogActions>
-=======
           <FormGroup row>
             { Object.keys(props.tags).map(key => (
               <FormControlLabel
@@ -116,7 +105,6 @@ const AddItemV = (props) => {
               Submit
           </Button>
         </DialogActions>
->>>>>>> master
       </Dialog>
     </div>
   )
