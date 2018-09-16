@@ -23,13 +23,13 @@ class GetImageC extends Component {
   setUploadFileHandler = () =>{
     console.log("uploading " + this.state.upload_image.name)
 
-    // Change modal to display the uploaded image
-    this.setState({viewType: 'display_upload'})
-
     // Setup for to be passed to AddItemC
     let form = new FormData()
     form.append('image', this.state.upload_image, this.state.upload_image.name)
-    this.props.getImageForm(form)
+    this.props.setImageForm(form)
+
+    // Change modal to display the uploaded image
+    this.setState({viewType: 'display_upload'})
 
     // axios.post(upload_url, form).then((res)=>{
     //   console.log(res.body)
@@ -40,7 +40,7 @@ class GetImageC extends Component {
   webcamImageCB = (img) => 
   {
     // Get the name
-    let name = localStorage.getItem('username') + '_HELLO!'
+    // let name = localStorage.getItem('username') + '_HELLO!'
     let data = img.split(',')[1]
     // console.log(data)
     // Store in local state to display
@@ -49,7 +49,7 @@ class GetImageC extends Component {
     // Setup form to send back to AddItemC
     let form = new FormData()
     form.append('image_data', data)
-    this.props.getImageForm(form)
+    this.props.setImageForm(form)
 
     // axios.post(upload_url, form).then((res)=>{
     //     console.log(res.body)

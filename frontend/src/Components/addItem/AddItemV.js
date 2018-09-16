@@ -46,7 +46,7 @@ const AddItemV = (props) => {
 
       <Dialog
           open={props.formOpen}
-          onClose={props.formCloseCB}
+          onClose={props.formCancelCB}
           aria-labelledby="form-dialog-title">
 
           <DialogTitle id="form-dialog-title">Add Item to Map</DialogTitle>
@@ -55,7 +55,7 @@ const AddItemV = (props) => {
                 Add Picture
             </DialogContentText>
 
-            <GetImageC getImageForm={props.getImageForm}/>
+            <GetImageC setImageForm={props.setImageForm}/>
 
             <TextField
                 autoFocus margin="dense" id="titleTF"
@@ -95,7 +95,7 @@ const AddItemV = (props) => {
 
           </DialogContent>
           <DialogActions>
-            <Button onClick={props.formCloseCB} color="primary">
+            <Button onClick={props.formCancelCB} color="primary">
                 Cancel
             </Button>
             <Button onClick={props.formCloseCB} color="primary">
