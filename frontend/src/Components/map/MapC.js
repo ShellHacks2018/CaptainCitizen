@@ -8,10 +8,10 @@ var dummyData = [
 	{
 		"location": {"lat": 25.756085, "lng": -80.376185},
 		"title": "Temp A",
-		"image": "https://drive.google.com/open?id=1jU4THx6ILA7UdAGkrgQeS0_EtRjQncmU",
+		"image": "http://government.fiu.edu/_assets/images/main-banner/fiu-lake.jpg",
 		"created_by": "1",
 		"user_item": false,
-		"type": "issue",
+		"type": "post",
 		"tags": "food",
 		"created_date": "2018-09-15T21:28:47.324Z",
 		"rating": 1,
@@ -19,10 +19,10 @@ var dummyData = [
 	{
 		"location": {"lat": 25.759794, "lng": -80.371109},
 		"title": "Temp B",
-		"image": "https://drive.google.com/open?id=1ufkmaLG0EvRa2icT7-bTWvpe33sSvHIL",
+		"image": "https://images1.miaminewtimes.com/imager/u/745xauto/9814187/florida-international-university-fiu.jpg",
 		"created_by": "2",
 		"user_item": false,
-		"type": "issue",
+		"type": "post",
 		"tags": "illegal_dumping",
 		"created_date": "2018-09-15T21:28:47.324Z",
 		"rating": 1,
@@ -30,7 +30,7 @@ var dummyData = [
 	{
 		"location": {"lat": 25.756854, "lng": -80.371467},
 		"title": "Temp C",
-		"image": "https://drive.google.com/open?id=18EG_0tApdT95Kc-QvtBZHSfkEBeNpoKt",
+		"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW9535TF6VnAx-R1uTr8-GxVfERmfpQAyzFQlCAjxpWCjvx7IU",
 		"created_by": "3",
 		"user_item": false,
 		"type": "post",
@@ -150,7 +150,7 @@ class MapC extends Component{
 
   render(){
 		this.getCurrentPosition();
-		this.filterMapItem();
+		// this.filterMapItem();
 		return(
 			<div>
 				<MapV google={this.props.google}
@@ -161,9 +161,9 @@ class MapC extends Component{
 							activeMarker={this.state.activeMarker}
 							showingInfoWindow={this.state.showingInfoWindow}
 							selectedPlaceName={this.state.selectedPlace.name}
-							selectedPlaceImg={this.imageData}
+							selectedPlaceImg={this.state.selectedPlace.image}
 							selectedPlaceRating={this.state.selectedPlace.rating}
-							mapItems={this.filterMapItems}
+							mapItems={dummyData}
 							userItem={this.state.selectedPlace.userItem} />
 			</div>
 		)

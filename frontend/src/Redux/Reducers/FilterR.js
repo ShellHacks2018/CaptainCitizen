@@ -1,8 +1,8 @@
 const initState  = {
 	type : "post",	
-    infrastructure: false,
-    illegal_dumping: false,
-    biohazard: false,
+    infrastructure: true,
+    illegal_dumping: true,
+    biohazard: true,
     event: true,
     food: true,
     place: true,
