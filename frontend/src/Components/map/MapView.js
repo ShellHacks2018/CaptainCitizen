@@ -65,9 +65,10 @@ const MapView = (props) => {
         })}
         <InfoWindow marker={props.activeMarker} visible={props.showingInfoWindow}>
           <div>
-            <h1 className={classes.titleCSS}>Title Should go here</h1>
+            <h1 className={classes.titleCSS}>{props.selectedPlaceName}</h1>
           </div>
-          <CardMedia component='img' className={classes.imageCSS} image={ClassRoom} title='Class PG6' />
+
+          <CardMedia component='img' className={classes.imageCSS} image={props.selectedPlaceImg} title='Class PG6' />
           <div className={classes.containerCSS}>
             <Button variant='contained' className={classes.innerButtonCSS} > Cultural </Button>
             <Button variant='contained' className={classes.innerButtonCSS} > Food </Button>
@@ -88,3 +89,5 @@ MapView.propTypes = {
 }
 
 export default withStyles(styles)(GoogleApiWrapper({ apiKey: gmap_key })(MapView))
+
+// download_url/props.selectedPlaceImg
