@@ -5,8 +5,7 @@ import AddItemV from './AddItemV'
 class AddItemC extends Component {
   state = {
     formOpen: false,
-    selectedType: '',
-    issue: true,
+    selectedType: 'post',
     post_tags: {
         event: false,
         food: false,
@@ -31,35 +30,54 @@ class AddItemC extends Component {
 
   typeChangeCB = event => {
     this.setState({ selectedType: event.target.value });
-    console.log(event.target.value)
   }
 
 
-//   checkClicked = (name) => event => {
-//     // [name] is called "computed property name"
-//     // Allows for variablly setting state in a single fuction!
-//     this.setState({ ...this.state, 
-//                     checkboxes: {
-//                       ...this.state.checkboxes,
-//                       [name]: event.target.checked }
-//                   });
-//   };
+  postClicked = (name) => event => {
+    // [name] is called "computed property name"
+    // Allows for variablly setting state in a single fuction!
+    this.setState({ ...this.state, 
+                    post_tags: {
+                      ...this.state.post_tags,
+                      [name]: event.target.checked }
+                  });
+  };
+
+  issuesClicked = (name) => event => {
+    // [name] is called "computed property name"
+    // Allows for variablly setting state in a single fuction!
+    this.setState({ ...this.state, 
+                    issue_tags: {
+                      ...this.state.issue_tags,
+                      [name]: event.target.checked }
+                  });
+  };
 
   render () 
   {
+    let tags = ''
+    let checkClicked = ''
+
+    if(this.state.selectedType === 'post'){
+        tags = this.state['post_tags']
+        checkClicked = this.postClicked
+    }
+    else{
+        tags = this.state['issue_tags']
+        checkClicked = this.issuesClicked
+    }
     return (
-      <div>
+    <div>
         <AddItemV 
-          formOpen={this.state.formOpen}
-          formOpenCB = {this.formOpenCB}
-          formCloseCB = {this.formCloseCB}
-          typeChangeCB = {this.typeChangeCB}
-          selectedType = {this.state.selectedType}
-          issues_tags = {this.state['post_tags']}
-          posts_tags = {this.state['issue_tags']}
-          tags = {this.state.post_tags}
+        formOpen={this.state.formOpen}
+        formOpenCB = {this.formOpenCB}
+        formCloseCB = {this.formCloseCB}
+        typeChangeCB = {this.typeChangeCB}
+        selectedType = {this.state.selectedType}
+        tags = {tags}
+        checkClicked = {checkClicked}
         />
-      </div>
+    </div>
     )
   }
 }
