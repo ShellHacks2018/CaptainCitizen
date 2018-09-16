@@ -1,7 +1,7 @@
 import React from 'react'
 import MapC from './../Components/map/MapC'
 
-const style = {padding: '20%'};
+const style = {padding: '20%', alignSelf: 'center'};
 
 const HomePV = (props) => {
 
