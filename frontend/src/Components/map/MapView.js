@@ -2,6 +2,7 @@ import React from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
+import key from '../../config'
 
 const MapView = (props) => {
   const MapItems = props.mapItems
@@ -42,6 +43,4 @@ MapView.propTypes = {
   initialCenter: PropTypes.object
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyC1vOSU7TREtpqb3WpCkUOjpY13MaReCPE'
-})(MapView)
+export default GoogleApiWrapper({ apiKey: key })(MapView)
