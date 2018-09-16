@@ -56,24 +56,20 @@ const AddItemV = (props) => {
 
         <DialogTitle id='form-dialog-title'>Add Item to Map</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-              Add Picture
-          </DialogContentText>
+            <DialogContentText>
+                Add Picture
+            </DialogContentText>
 
-<<<<<<< HEAD
-            <GetImageC getImageForm={props.getImageForm}/>
-=======
-          <GetImageC getImage={props.getImage} />
->>>>>>> cristian-fetch
+            <GetImageC setImageForm={props.setImageForm}/>
 
-          <TextField
-            autoFocus margin='dense' id='titleTF'
-            label='Title' fullWidth
-          />
+            <TextField
+                autoFocus margin="dense" id="titleTF"
+                label="Title" fullWidth
+            />
 
-          <FormControl component='fieldset'>
-            {/* <FormLabel component="legend">Type</FormLabel> */}
-            <RadioGroup
+            <FormControl component="fieldset">
+                {/* <FormLabel component="legend">Type</FormLabel> */}
+              <RadioGroup
               row={true}
               aria-label='Type'
               name='typeRB'
