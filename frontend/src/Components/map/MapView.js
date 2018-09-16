@@ -9,7 +9,8 @@ import { withStyles } from '@material-ui/core/styles'
 import CardMedia from '@material-ui/core/CardMedia'
 
 import Rating from 'react-rating'
-import ClassRoom from '../../Assets/classRoom.jpg'
+
+import './index.css'
 
 const styles = {
   container: {
@@ -51,7 +52,7 @@ const MapView = (props) => {
   const MapItems = props.mapItems
   return (
     <div>
-      <Map style={{margin: '15% 10%', height: '75%', width: '75%'}} google={props.google} onClick={props.onMapClicked} center={props.currentLocation} >
+      <Map className='map' style={{margin: '15% 10%', height: '75%', width: '75%'}} google={props.google} onClick={props.onMapClicked} center={props.currentLocation} >
         { MapItems.map(data => {
           return (
             <Marker

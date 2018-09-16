@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {upload_url} from '../../config.js'
+import axios from 'axios'
 
 import AddItemV from './AddItemV'
 
@@ -6,7 +8,7 @@ class AddItemC extends Component {
   state = {
     formOpen: false,
     selectedType: 'post',
-    image: '',
+    image_form: '',
     post_tags: {
         event: false,
         food: false,
@@ -20,8 +22,9 @@ class AddItemC extends Component {
         }
     }
 
-  getImage = (img) => {
-      this.setState({image: img})
+  setImageForm = (form) => {
+    console.log(form)
+      this.setState({image_form: form})
   }
 
   formOpenCB = () => {
@@ -30,13 +33,22 @@ class AddItemC extends Component {
   };
 
   formCloseCB = () => {
+    // Close the form
     this.setState({ formOpen: false });
+
+    // post data to mapItems
+    console.log(this.state.image_form)
+
+    // Post image to s3
+    axios.post(upload_url, this.state.image_form).then((res)=>{
+      console.log(res.body)
+    }).catch((err)=>{console.log(err)})
   };
 
-  typeChangeCB = event => {
-    this.setState({ selectedType: event.target.value });
+  formCancelCB = () => {
+    // Close the form
+    this.setState({ formOpen: false });
   }
-
 
   postClicked = (name) => event => {
     // [name] is called "computed property name"
@@ -77,11 +89,12 @@ class AddItemC extends Component {
         formOpen={this.state.formOpen}
         formOpenCB = {this.formOpenCB}
         formCloseCB = {this.formCloseCB}
+        formCancelCB = {this.formCancelCB}
         typeChangeCB = {this.typeChangeCB}
         selectedType = {this.state.selectedType}
         tags = {tags}
         checkClicked = {checkClicked}
-        getImage = {this.getImage}
+        setImageForm = {this.setImageForm}
         />
     </div>
     )

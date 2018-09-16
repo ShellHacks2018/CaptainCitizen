@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
-import NavDrawer from './NavDrawer';
+import NavDrawer from './NavDrawer'
 
 const styles = {
   flex: {
@@ -22,20 +22,19 @@ const styles = {
   },
   loginButton: {
     marginRight: 50
+  },
+  logoutButton: {
+    text: 'white'
   }
 }
-
-
 
 const NavbarV = (props) => {
   const { classes } = props
   if (props.currentAuth) {
     return (
-      <AppBar position='fixed' color="secondary">
+      <AppBar position='fixed' color='secondary'>
         <Toolbar>
-          <Typography variant='title' color='inherit' className={classes.flex}>
-                  Profile
-          </Typography>
+          <Typography variant='title' color='inherit' className={classes.flex}> Profile </Typography>
           <Link to='/'>
             <Button onClick={props.logoff} className={classes.logoutButton} color='inherit'>Logout</Button>
           </Link>
@@ -45,39 +44,18 @@ const NavbarV = (props) => {
           </IconButton>
         </Toolbar>
       </AppBar>
-
-      // <div>
-      //   <nav className='navbar navbar-dark bg-dark'>
-      //     <Link className='navbar-brand' to='/home'>Captain Citizen</Link>
-      //     <ul className='nav justify-content-center'>
-      //       <li className='nav-item'>
-      //         <Link className='nav-link active' to='/home'>Map</Link>
-      //       </li>
-      //     </ul>
-      //   </nav>
-      // </div>
     )
   } else {
     return (
       <AppBar position='fixed' color='secondary'>
         <Toolbar>
-          <Typography variant='title' color='inherit' className={classes.flex}>
-            Captain Citizen
-          </Typography>
+          <Typography variant='title' color='inherit' className={classes.flex}> Captain Citizen </Typography>
           <IconButton className={classes.menuButton} color='inherit' aria-label='Menu'>
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
-
-
-      // <div>
-      //   <nav className='navbar navbar-dark bg-dark'>
-      //     <Link className='navbar-brand' to='/'>Captain Citizen</Link>
-      //   </nav>
-      //   <Redirect to='/' />
-      // </div>
     )
   }
 }
@@ -86,6 +64,5 @@ NavbarV.propTypes = {
   currentAuth: PropTypes.bool,
   logoff: PropTypes.func
 }
-
 
 export default withStyles(styles)(NavbarV)
