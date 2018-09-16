@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import CamSnapshotV from './camSnapshotV';
+import WebcamPicV from './WebcamPicV';
 
-export default class CamSnapshotC extends Component{
+export default class WebcamPicC extends Component{
   state = {
     image: null
   }
@@ -32,7 +32,7 @@ export default class CamSnapshotC extends Component{
 
     return (
       <div>
-        <CamSnapshotV 
+        <WebcamPicV 
           setRef={ this.setRef }
           videoConstraints={ videoConstraints }
           capture={this.capture}

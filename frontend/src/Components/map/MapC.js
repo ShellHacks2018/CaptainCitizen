@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import MapV from './MapV.js'
+import MapV from './MapView.js'
 import {connect} from 'react-redux'
 
 
 var dummyData = [
-	{ 
+	{
 		"location": {"lat": 25.756085, "lng": -80.376185},
-		"title": "Temp A",	
+		"title": "Temp A",
 		"image": "https://news.fiu.edu/wp-content/uploads/33361133815_4930957805_z-1-1.jpg",
 		"created_by": "1",
 		"user_item": false,
@@ -15,9 +15,9 @@ var dummyData = [
 		"created_date": "2018-09-15T21:28:47.324Z",
 		"rating": 1,
 	},
-	{ 
+	{
 		"location": {"lat": 25.759794, "lng": -80.371109},
-		"title": "Temp B",	
+		"title": "Temp B",
 		"image": "https://news.fiu.edu/wp-content/uploads/33361133815_4930957805_z-1-1.jpg",
 		"created_by": "2",
 		"user_item": false,
@@ -26,9 +26,9 @@ var dummyData = [
 		"created_date": "2018-09-15T21:28:47.324Z",
 		"rating": 1,
 	},
-	{ 
+	{
 		"location": {"lat": 25.756854, "lng": -80.371467},
-		"title": "Temp C",	
+		"title": "Temp C",
 		"image": "https://news.fiu.edu/wp-content/uploads/33361133815_4930957805_z-1-1.jpg",
 		"created_by": "3",
 		"user_item": false,
@@ -40,13 +40,12 @@ var dummyData = [
 ]
 
 
-
 class MapC extends Component{
 	data = []
 	constructor(props){
     super(props);
 		const {lat, lng} = this.props.initialCenter;
-		
+
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
@@ -55,11 +54,9 @@ class MapC extends Component{
         lat: lat,
         lng: lng
 			}
-
 		}
-
 	}
-	
+
 
 	onMarkerClicked = (props, marker, e) =>
 	this.setState({
@@ -92,7 +89,7 @@ class MapC extends Component{
 		else{
 			// Browser doesn't support Geolocation
 			console.log("Browser doesn't suppport Geolocation");
-		}  
+		}
 	}
 
 	updateUserItem = () => {
@@ -102,17 +99,16 @@ class MapC extends Component{
 			}
 			return item
 		})
-		
+
 	}
 
 	componentDidMount(){
-		// this.props.setUserItem.setMapItems();
 		this.updateUserItem();
-		// console.log(dummyData)
+		// console.log(this.props.filter)
 	}
 
   render(){
-		this.getCurrentPosition();		
+		this.getCurrentPosition();
 		return(
 			<div>
 				<MapV google={this.props.google}
@@ -144,6 +140,8 @@ MapC.defaultProps = {
 const mapStateToProps = state => {
 	return{
 		// mapItems: state.itemR.dummyMapItems
+		filter: state.FilterR
+		
 	}
 }
 

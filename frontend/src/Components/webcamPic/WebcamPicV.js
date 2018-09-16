@@ -4,7 +4,7 @@ import Webcam from 'react-webcam';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-const CamSnapshotV = (props) => {
+const WebcamPicV = (props) => {
   if(props.image)
   {
     return(
@@ -32,4 +32,4 @@ const CamSnapshotV = (props) => {
  
 }
 
-export default CamSnapshotV;
+export default WebcamPicV;

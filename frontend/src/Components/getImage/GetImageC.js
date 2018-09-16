@@ -14,6 +14,7 @@ class GetImageC extends Component {
 
   /* Image selected by user */
   uploadSelected = (event) => {
+    this.props.getImage(this.state.pic)
     console.log(event)
   }
 
@@ -28,7 +29,6 @@ class GetImageC extends Component {
   viewTypeCamera = (al) => {
     this.setState({viewType: 'camera'})
   }
-
 
   render () {
     return (

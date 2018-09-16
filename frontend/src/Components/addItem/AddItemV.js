@@ -16,7 +16,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 import { withStyles } from '@material-ui/core/styles'
 
-// import GetImageC from '../getImage/GetImageC';
+import GetImageC from '../getImage/GetImageC';
 
 const styles = theme => ({
     button: {
@@ -55,7 +55,7 @@ const AddItemV = (props) => {
                 Add Picture
             </DialogContentText>
 
-            {/* <GetImageC /> */}
+            <GetImageC getImage={props.getImage}/>
 
             <TextField
                 autoFocus margin="dense" id="titleTF"
@@ -65,9 +65,10 @@ const AddItemV = (props) => {
             <FormControl component="fieldset">
                 {/* <FormLabel component="legend">Type</FormLabel> */}
                 <RadioGroup
+                    row={true}
                     aria-label="Type"
                     name="typeRB"
-                    // className={classes.group}
+                    className={classes.group}
                     value={props.selectedType}
                     onChange={props.typeChangeCB}
                 >
@@ -77,20 +78,20 @@ const AddItemV = (props) => {
                 </RadioGroup>
             </FormControl>
 
-            {/* <FormGroup row>
-              { Object.keys(props.checkedState).map( option => ( 
+            <FormGroup row>
+              { Object.keys(props.tags).map( key => ( 
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={props.checkedState[option]}
-                      onChange={props.checkClicked(option)}
+                      checked={props.tags[key]}
+                      onChange={props.checkClicked(key)}
                       value="checkedA"
                     />
                 }
-                label={option}
+                label={key}
                 /> )) 
               }
-            </FormGroup> */}
+            </FormGroup>
 
           </DialogContent>
           <DialogActions>
