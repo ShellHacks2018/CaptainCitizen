@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< HEAD
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
@@ -7,6 +8,9 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import CardMedia from '@material-ui/core/CardMedia'
+=======
+import MapC from './../Components/map/MapC'
+>>>>>>> master
 
 /*For rating Stars */
 import Rating from 'react-rating'
@@ -42,6 +46,7 @@ const HomePV = (props) => {
   const {classes} = props
   return (
     <div>
+<<<<<<< HEAD
       <h1 className={classes.HomeCSS}>Home!</h1>
       <Button variant='contained' className={classes.buttonCSS} onClick={props.handleOpenAction}> Open Modal </Button>
       <Dialog paperWidthLg className={classes.modalCSS} open={props.open} onClose={props.handleCloseAction} aria-labelledby='alert-dialog-title' aria-describedby='alert-dialog-description' >
@@ -57,6 +62,10 @@ const HomePV = (props) => {
           </div>
         </DialogContent>
       </Dialog>
+=======
+      <h1 style={style}>Home!</h1>
+      <MapC />
+>>>>>>> master
     </div>
   )
 }

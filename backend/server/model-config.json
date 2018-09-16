@@ -38,5 +38,9 @@
   "Container": {
     "dataSource": "s3",
     "public": true
+  },
+  "MapItem": {
+    "dataSource": "mapitems",
+    "public": true
   }
 }
