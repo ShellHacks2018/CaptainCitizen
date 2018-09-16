@@ -107,6 +107,7 @@ class MapC extends Component{
 		// console.log(this.props.filter)
 	}
 
+
   render(){
 		this.getCurrentPosition();
 		return(
@@ -132,8 +133,8 @@ MapC.defaultProps = {
   zoom: 16,
   // San Francisco, by default
   initialCenter: {
-    lat: 25.760100,
-    lng: -80.374445
+    lat: 25.756085,
+    lng: -80.376185
   },
 }
 
@@ -145,10 +146,5 @@ const mapStateToProps = state => {
 	}
 }
 
-const mapActionToProps = dispatch =>{
-	return{
-		// setUserItem: itemA(dispatch)
-	}
-}
 
-export default connect(mapStateToProps, mapActionToProps)(MapC)
+export default connect(mapStateToProps)(MapC)
