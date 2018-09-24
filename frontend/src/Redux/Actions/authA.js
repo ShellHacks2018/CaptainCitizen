@@ -9,7 +9,6 @@ const authA = (dispatch) => {
       }).catch((err) => {console.log(err); })
     },
     login: (data) => {
-      console.log(process.env.REACT_APP_LOGIN_URL);
       axios.post(process.env.REACT_APP_LOGIN_URL, data).then(
         (res) => {
           console.log(res)
