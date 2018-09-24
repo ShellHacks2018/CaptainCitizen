@@ -88,8 +88,10 @@ class GetImageC extends Component {
   setUploadFileHandler = () =>{
     // Change name to fit conventions
     let ext = this.state.upload_file.name.split('.').pop()
+    let name = this.getFileName(ext)
+    this.props.setImageName(name)
     const newFile = new File([this.state.upload_file], 
-                              this.getFileName(ext), 
+                              name, 
                               {type: this.state.upload_file.type});
     this.setState({upload_file: newFile})
 
@@ -107,6 +109,7 @@ class GetImageC extends Component {
   {
     // Get the name
     let name = this.getFileName("png")
+    this.props.setImageName(name)
 
     // Store in local state to display
     this.setState({webcam_image: img})

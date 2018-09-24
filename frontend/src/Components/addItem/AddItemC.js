@@ -6,8 +6,10 @@ import AddItemV from './AddItemV'
 class AddItemC extends Component {
   state = {
     formOpen: false,
+    title: '',
     selectedType: 'post',
     image_form: '',
+    image_name: '',
     post_tags: {
         event: false,
         food: false,
@@ -18,15 +20,31 @@ class AddItemC extends Component {
         infrastructure: false,
         illegal_dumping: false,
         biohazard: false
-        }
+        },
+    currentLocation: {
+      lat: '',
+      lng: ''
+      }
     }
 
   getTags = () => {
   // Used by GetImageC to create the file name
-    return {
-      post_tags: this.state.post_tags,
-      issue_tags: this.state.issue_tags
+    let tags = []
+    if(this.state.selectedType === 'post'){ 
+      for(var prop in this.state.post_tags){
+        if(this.state.post_tags[prop]){
+          tags.push(prop)
+        }
+      }
     }
+    else {       
+      for(var prop in this.state.issue_tags){
+        if(this.state.issue_tags[prop]){
+          tags.push(prop)
+        }
+      }
+    }
+    return tags
   }
 
   setImageForm = (form) => {
@@ -38,12 +56,52 @@ class AddItemC extends Component {
     this.setState({ formOpen: true });
   };
 
+	getCurrentPosition = () => {
+		if(navigator.geolocation)
+		{
+      console.log('Getting location...')
+			navigator.geolocation.getCurrentPosition( (position) => {
+        this.setState({
+          currentLocation: {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+          }
+        }) 
+      });
+    }
+		else{
+			// Browser doesn't support Geolocation
+			console.log("Browser doesn't suppport Geolocation");
+		}
+  }
+
+  setImageName = (name) => {
+    this.setState({image_name: name})
+  }
+  
   formCloseCB = () => {
     // Close the form
     this.setState({ formOpen: false });
+    this.getCurrentPosition()
 
-    // post data to mapItems
-    console.log(this.state.image_form)
+    console.log(this.state.currentLocation)
+    // post data to MapItems
+    let data = {
+      "image": this.state.image_name,
+      "title": document.getElementById('titleTF').value,
+      "tags": this.getTags(),
+      "type": this.state.selectedType,
+      "user_item": false,
+      "created_date": new Date(),
+      "created_by": localStorage.getItem('user').split('@')[0],
+      "location": this.state.currentLocation,
+      "rating": 1
+    }
+
+    console.log(data)
+    axios.post(process.env.REACT_APP_MAPPOST_URL, data).then((res)=>{
+      console.log(res.body)
+    }).catch((err)=>{console.log(err)})
 
     // Post image to s3
     axios.post(process.env.REACT_APP_UPLOAD_URL, this.state.image_form).then((res)=>{
@@ -103,6 +161,8 @@ class AddItemC extends Component {
         typeChangeCB = {this.typeChangeCB}
         selectedType = {this.state.selectedType}
         tags = {tags}
+        title = {this.state.title}
+        setImageName = {this.setImageName}
         checkClicked = {checkClicked}
         setImageForm = {this.setImageForm}
         />

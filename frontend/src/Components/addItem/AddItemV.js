@@ -62,7 +62,8 @@ const AddItemV = (props) => {
 
             <GetImageC setImageForm={props.setImageForm} 
                       tags={props.tags}
-                      selectedType={props.selectedType}/>
+                      selectedType={props.selectedType}
+                      setImageName={props.setImageName}/>
 
             <TextField
                 autoFocus margin="dense" id="titleTF"
