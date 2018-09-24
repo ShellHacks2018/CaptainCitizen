@@ -32,6 +32,7 @@ class GetImageC extends Component {
   }
 
   setUploadFileHandler = () =>{
+    // @todo: Change name to fit conventions
     // Setup form to be passed to AddItemC
     let form = new FormData()
     form.append('', this.state.upload_file)
@@ -45,7 +46,7 @@ class GetImageC extends Component {
   webcamImageCB = (img) => 
   {
     // Get the name
-    // let name = localStorage.getItem('username') + '_HELLO!'
+    let name = localStorage.getItem('user').split('@')[0] + '_HELLO.png'
     
     // console.log(data)
     // Store in local state to display
@@ -56,7 +57,7 @@ class GetImageC extends Component {
     fetch(img)
     .then(res => res.blob())
     .then(blob => {
-      const file = new File([blob], "foo.png")
+      const file = new File([blob], name)
 
       // Setup form to send back to AddItemC
       let form = new FormData()
