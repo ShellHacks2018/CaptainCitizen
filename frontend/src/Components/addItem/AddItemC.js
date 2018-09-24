@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {upload_url} from '../../config.js'
 import axios from 'axios'
 
 import AddItemV from './AddItemV'
@@ -40,7 +39,7 @@ class AddItemC extends Component {
     console.log(this.state.image_form)
 
     // Post image to s3
-    axios.post(upload_url, this.state.image_form).then((res)=>{
+    axios.post(process.env.REACT_APP_UPLOAD_URL, this.state.image_form).then((res)=>{
       console.log(res.body)
     }).catch((err)=>{console.log(err)})
   };
