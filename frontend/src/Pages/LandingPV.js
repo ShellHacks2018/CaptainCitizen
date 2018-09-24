@@ -15,7 +15,7 @@ const styles = {
   mixCSS: {
     marginLeft: '40%',
     marginRight: '25%',
-    marginTop: '10%',
+    marginTop: '5%',
     marginBottom: '25%'
   },
   card: {
