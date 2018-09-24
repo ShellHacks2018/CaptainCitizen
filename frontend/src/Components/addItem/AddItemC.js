@@ -27,6 +27,10 @@ class AddItemC extends Component {
       }
     }
 
+  componentDidMount(){
+    this.getCurrentPosition()
+  }
+
   getTags = () => {
   // Used by GetImageC to create the file name
     let tags = []
@@ -59,7 +63,6 @@ class AddItemC extends Component {
 	getCurrentPosition = () => {
 		if(navigator.geolocation)
 		{
-      console.log('Getting location...')
 			navigator.geolocation.getCurrentPosition( (position) => {
         this.setState({
           currentLocation: {
@@ -82,7 +85,6 @@ class AddItemC extends Component {
   formCloseCB = () => {
     // Close the form
     this.setState({ formOpen: false });
-    this.getCurrentPosition()
 
     console.log(this.state.currentLocation)
     // post data to MapItems
