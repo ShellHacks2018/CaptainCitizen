@@ -60,7 +60,9 @@ const AddItemV = (props) => {
                 Add Picture
             </DialogContentText>
 
-            <GetImageC setImageForm={props.setImageForm}/>
+            <GetImageC setImageForm={props.setImageForm} 
+                      tags={props.tags}
+                      selectedType={props.selectedType}/>
 
             <TextField
                 autoFocus margin="dense" id="titleTF"

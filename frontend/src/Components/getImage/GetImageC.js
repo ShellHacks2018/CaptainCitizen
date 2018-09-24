@@ -16,6 +16,59 @@ class GetImageC extends Component {
     }
   }
 
+  getFileName = (ext) => {
+    /* Generate unique image file name */
+    let user = localStorage.getItem('user').split('@')[0]
+    let tags = ''
+    for(var prop in this.props.tags)
+    {
+      if(this.props.tags[prop])
+      {
+        tags += '_' + prop 
+      }
+    }
+    let dateStr = this.getDateStr()
+    let timeStr = this.getTimeStr()
+
+    return user+"_"+this.props.selectedType+tags+"_"+dateStr+"_"+timeStr+"."+ext
+  }
+
+  // Used for unique image file naming
+  getDateStr = () => {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1; //January is 0!
+    let yyyy = today.getFullYear();
+
+    if(dd<10){
+        dd='0'+dd;
+    } 
+    if(mm<10){
+        mm='0'+mm;
+    } 
+
+    return mm+"_"+dd+"_"+yyyy
+  }
+
+  // Used for unique image file naming
+  getTimeStr = () => {
+    const checkTime = (i) => {
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    }
+      let today = new Date();
+      let h = today.getHours();
+      let m = today.getMinutes();
+      let s = today.getSeconds();
+      // add a zero in front of numbers<10
+      m = checkTime(m);
+      s = checkTime(s);
+
+      return h+"_"+m+"_"+s
+  }
+
   /* Image selected by user */
   fileSelectedCB = (event) => {
     // Store in local state to use in form for submission
@@ -31,11 +84,18 @@ class GetImageC extends Component {
     };
   }
 
+  /* Set button pressed after upload image selection */
   setUploadFileHandler = () =>{
-    // @todo: Change name to fit conventions
+    // Change name to fit conventions
+    let ext = this.state.upload_file.name.split('.').pop()
+    const newFile = new File([this.state.upload_file], 
+                              this.getFileName(ext), 
+                              {type: this.state.upload_file.type});
+    this.setState({upload_file: newFile})
+
     // Setup form to be passed to AddItemC
     let form = new FormData()
-    form.append('', this.state.upload_file)
+    form.append('', newFile)
     this.props.setImageForm(form)
 
     // Change modal to display the uploaded image
@@ -46,9 +106,8 @@ class GetImageC extends Component {
   webcamImageCB = (img) => 
   {
     // Get the name
-    let name = localStorage.getItem('user').split('@')[0] + '_HELLO.png'
-    
-    // console.log(data)
+    let name = this.getFileName("png")
+
     // Store in local state to display
     this.setState({webcam_image: img})
 
@@ -67,10 +126,6 @@ class GetImageC extends Component {
       // Change state to display the image
       this.setState({viewType: 'display_webcam'})
     })
-  }
-
-  setWebcamFileHandler = () => {
-    this.setState({viewType: 'display_webcam'})
   }
 
   viewTypeCancel = () => {

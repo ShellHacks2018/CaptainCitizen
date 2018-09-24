@@ -21,9 +21,16 @@ class AddItemC extends Component {
         }
     }
 
+  getTags = () => {
+  // Used by GetImageC to create the file name
+    return {
+      post_tags: this.state.post_tags,
+      issue_tags: this.state.issue_tags
+    }
+  }
+
   setImageForm = (form) => {
-    console.log(form)
-      this.setState({image_form: form})
+    this.setState({image_form: form})
   }
 
   formOpenCB = () => {
