@@ -16,7 +16,6 @@ const GetImageV = (props) => {
             <img alt="Your pic should be here!!!" 
                   src={props.upload_image} 
                   width="300" height="300"/>
-            {/* <button >Keep?</button> */}
           </div>
         );
       }
@@ -25,7 +24,6 @@ const GetImageV = (props) => {
         return(
           <div>
             <img alt="Your pic should be here!!!" src={props.webcam_image} />
-            {/* <button >Keep?</button> */}
           </div>
         );
       }

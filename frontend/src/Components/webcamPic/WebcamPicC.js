@@ -24,7 +24,6 @@ export default class WebcamPicC extends Component{
   }
 
   keepImage = () => {
-    console.log('Keeper!')
     this.props.webcamImageCB(this.state.image)
   }
 
