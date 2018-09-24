@@ -1,5 +1,5 @@
 import React from 'react'
-import {gmap_key} from '../../config.js'
+// import {gmap_key} from '../../config.js'
 import PropTypes from 'prop-types'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
 import image from '../../Assets/classRoom.jpg'
@@ -92,6 +92,6 @@ MapView.propTypes = {
   initialCenter: PropTypes.object
 }
 
-export default withStyles(styles)(GoogleApiWrapper({ apiKey: gmap_key })(MapView))
+export default withStyles(styles)(GoogleApiWrapper({ apiKey: process.env.REACT_APP_GMAP_KEY })(MapView))
 
 // download_url/props.selectedPlaceImg

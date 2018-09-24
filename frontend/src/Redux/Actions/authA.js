@@ -1,15 +1,16 @@
 import axios from 'axios'
-import {reg_url, login_url} from '../../config.js'
+// import {reg_url, login_url} from '../../config.js'
 
 const authA = (dispatch) => {
   
   return {
     register: (data) => {
-      axios.post(reg_url, data).then( (response) => {
+      axios.post(process.env.REACT_APP_REG_URL, data).then( (response) => {
       }).catch((err) => {console.log(err); })
     },
     login: (data) => {
-      axios.post(login_url, data).then(
+      console.log(process.env.REACT_APP_LOGIN_URL);
+      axios.post(process.env.REACT_APP_LOGIN_URL, data).then(
         (res) => {
           console.log(res)
           localStorage.setItem('user', data.email)
