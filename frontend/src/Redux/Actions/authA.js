@@ -11,7 +11,6 @@ const authA = (dispatch) => {
     login: (data) => {
       axios.post(process.env.REACT_APP_LOGIN_URL, data).then(
         (res) => {
-          console.log(res)
           localStorage.setItem('user', data.email)
           localStorage.setItem('token', res.data.id)
           localStorage.setItem('userId', res.data.userId)
