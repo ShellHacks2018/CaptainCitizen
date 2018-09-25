@@ -62,6 +62,7 @@ class GetImageC extends Component {
       let h = today.getHours();
       let m = today.getMinutes();
       let s = today.getSeconds();
+
       // add a zero in front of numbers<10
       m = checkTime(m);
       s = checkTime(s);
@@ -76,8 +77,10 @@ class GetImageC extends Component {
 
     // Create new filereader
     let reader = new FileReader();
+
     // Decode the file data
     reader.readAsDataURL(event.target.files[0]);
+
     // Add result attribute to event, and store it in state to display
     reader.onload = (event) => {
         this.setState({upload_image: event.target.result});
@@ -85,7 +88,7 @@ class GetImageC extends Component {
   }
 
   /* Set button pressed after upload image selection */
-  setUploadFileHandler = () =>{
+  setUploadFileHandler = () => {
     // Change name to fit conventions
     let ext = this.state.upload_file.name.split('.').pop()
     let name = this.getFileName(ext)
@@ -115,7 +118,6 @@ class GetImageC extends Component {
     this.setState({webcam_image: img})
 
     // Base64 String -> Blob -> File
-    // @todo: Better file naming!
     fetch(img)
     .then(res => res.blob())
     .then(blob => {

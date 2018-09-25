@@ -55,33 +55,25 @@ const AddItemV = (props) => {
         aria-labelledby='form-dialog-title'>
 
         <DialogTitle id='form-dialog-title'>Add Item to Map</DialogTitle>
+
         <DialogContent>
-            <DialogContentText>
-                Add Picture
-            </DialogContentText>
 
-            <GetImageC setImageForm={props.setImageForm} 
-                      tags={props.tags}
-                      selectedType={props.selectedType}
-                      setImageName={props.setImageName}/>
+          <TextField
+              autoFocus margin="dense" id="titleTF"
+              label="Title" fullWidth
+          />
 
-            <TextField
-                autoFocus margin="dense" id="titleTF"
-                label="Title" fullWidth
-            />
-
-            <FormControl component="fieldset">
-                {/* <FormLabel component="legend">Type</FormLabel> */}
-              <RadioGroup
-              row={true}
-              aria-label='Type'
-              name='typeRB'
-              className={classes.group}
-              value={props.selectedType}
-              onChange={props.typeChangeCB} >
+          <FormControl component="fieldset">
+              {/* <FormLabel component="legend">Type</FormLabel> */}
+            <RadioGroup
+            row={true}
+            aria-label='Type'
+            name='typeRB'
+            className={classes.group}
+            value={props.selectedType}
+            onChange={props.typeChangeCB} >
               <FormControlLabel value='post' control={<Radio />} label='Post' />
               <FormControlLabel value='issue' control={<Radio />} label='Issue' />
-
             </RadioGroup>
           </FormControl>
 
@@ -99,7 +91,16 @@ const AddItemV = (props) => {
             }
           </FormGroup>
 
+          <DialogContentText>
+              Add Picture
+          </DialogContentText>
+
+          <GetImageC setImageForm={props.setImageForm} 
+                    tags={props.tags}
+                    selectedType={props.selectedType}
+                    setImageName={props.setImageName}/>
         </DialogContent>
+
         <DialogActions>
           <Button onClick={props.formCloseCB} color='primary'>
               Cancel
