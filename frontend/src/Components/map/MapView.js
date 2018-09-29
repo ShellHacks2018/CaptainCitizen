@@ -1,17 +1,17 @@
-import React from 'react'
+import React from 'react';
 // import {gmap_key} from '../../config.js'
-import PropTypes from 'prop-types'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
+import PropTypes from 'prop-types';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 // import image from '../../Assets/classRoom.jpg'
 
 // import Button from '@material-ui/core/Button'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/core/styles';
 // import DialogActions from '@material-ui/core/DialogActions'
-import CardMedia from '@material-ui/core/CardMedia'
+import CardMedia from '@material-ui/core/CardMedia';
 
 // import Rating from 'react-rating'
 
-import './index.css'
+import './index.css';
 
 const styles = {
   container: {
@@ -46,22 +46,26 @@ const styles = {
     marginRight: '25%',
     width: '100%'
   }
-}
+};
 
-const MapView = (props) => {
-  const {classes} = props
+const MapView = props => {
+  const { classes } = props;
   // const MapItems = props.MapItems
-  console.log(props)
+  console.log(props);
   return (
     <div>
-      <Map className='map' 
-        style={{margin: '15% 10%', 
-        height: '75%', width: '75%'}} 
-        google={props.google} 
-        onClick={props.onMapClicked} 
-        center={props.currentLocation} >
-
-        { props.mapItems.map( (data) => {
+      <Map
+        className="map"
+        style={{
+          margin: '15% 10%',
+          height: '75%',
+          width: '75%'
+        }}
+        google={props.google}
+        onClick={props.onMapClicked}
+        center={props.currentLocation}
+      >
+        {props.mapItems.map(data => {
           return (
             <Marker
               onClick={props.onMarkerClicked}
@@ -69,13 +73,15 @@ const MapView = (props) => {
               image={data.image}
               rating={data.rating}
               userItem={data.user_item}
-              position={data.location} />
-          )
+              position={data.location}
+            />
+          );
         })}
 
-        <InfoWindow 
-            marker={props.activeMarker} 
-            visible={props.showingInfoWindow}>
+        <InfoWindow
+          marker={props.activeMarker}
+          visible={props.showingInfoWindow}
+        >
           <div>
             <h1 className={classes.titleCSS}>
               {props.activeMarkerProps.title}
@@ -83,10 +89,12 @@ const MapView = (props) => {
             {/* <p>{console.log(props.selectedPlaceImg)}</p> */}
           </div>
           {/* <img alt="..." src={props.selectedPlaceImg} />  */}
-          <CardMedia component='img' 
-            className={classes.imageCSS} 
-            image={props.markerImage} 
-            title={props.activeMarkerProps.title} />
+          <CardMedia
+            component="img"
+            className={classes.imageCSS}
+            image={props.markerImage}
+            title={props.activeMarkerProps.title}
+          />
 
           {/* <div className={classes.containerCSS}>
             { props.activeMarkerProps.tags.map (
@@ -101,18 +109,19 @@ const MapView = (props) => {
             <Rating className={classes.ratingCSS} />
           </div> */}
         </InfoWindow>
-
       </Map>
     </div>
-  )
-}
+  );
+};
 
 MapView.propTypes = {
   google: PropTypes.object,
   zoom: PropTypes.number,
   initialCenter: PropTypes.object
-}
+};
 
-export default withStyles(styles)(GoogleApiWrapper({ apiKey: process.env.REACT_APP_GMAP_KEY })(MapView))
+export default withStyles(styles)(
+  GoogleApiWrapper({ apiKey: process.env.REACT_APP_GMAP_KEY })(MapView)
+);
 
 // download_url/props.selectedPlaceImg

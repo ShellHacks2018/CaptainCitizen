@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import LandingPV from './LandingPV';
-import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import authA from '../Redux/Actions/authA';
 
@@ -10,37 +10,29 @@ import authA from '../Redux/Actions/authA';
  * @param {Object} event Click event
  */
 class LandingPC extends Component {
-  /**
-   * @param {*} props Properties passed in by parent
-   */
-  constructor(props) {
-    super(props);
-    this.props = props;
-  }
-
-  updateEmail = (event) => {
+  updateEmail = event => {
     this.props.updateEmail(event.target.value);
-  }
-  updatePassword = (event) => {
+  };
+  updatePassword = event => {
     this.props.updatePassword(event.target.value);
-  }
+  };
 
   signInSubmit = () => {
     let data = {
-      'email': this.props.email,
-      'password': this.props.password,
+      email: this.props.email,
+      password: this.props.password
     };
     this.props.authFn.login(data);
-  }
+  };
 
   createSubmit = () => {
     let data = {
-      'username': this.props.email,
-      'email': this.props.email,
-      'password': this.props.password,
+      username: this.props.email,
+      email: this.props.email,
+      password: this.props.password
     };
     this.props.authFn.register(data);
-  }
+  };
 
   /**
    * Component render()
@@ -55,30 +47,34 @@ class LandingPC extends Component {
           updateEmail={this.updateEmail}
           updatePassword={this.updatePassword}
           signInSubmit={this.signInSubmit}
-          createSubmit={this.createSubmit} />
+          createSubmit={this.createSubmit}
+        />
       );
     }
   }
 }
 
-const landingPageState = (state) => {
+const landingPageState = state => {
   return {
     email: state.LoginPageR.email,
     password: state.LoginPageR.password,
-    auth: state.authR.auth,
+    auth: state.authR.auth
   };
 };
 
-const landingPageAction = (dispatch) => {
+const landingPageAction = dispatch => {
   return {
-    updateEmail: (val) => {
-      dispatch({type: 'GET_EMAIL', val: val});
+    updateEmail: val => {
+      dispatch({ type: 'GET_EMAIL', val: val });
     },
-    updatePassword: (val) => {
-      dispatch({type: 'GET_PASSWORD', val: val});
+    updatePassword: val => {
+      dispatch({ type: 'GET_PASSWORD', val: val });
     },
-    authFn: authA(dispatch),
+    authFn: authA(dispatch)
   };
 };
 
-export default connect(landingPageState, landingPageAction)(LandingPC);
+export default connect(
+  landingPageState,
+  landingPageAction
+)(LandingPC);

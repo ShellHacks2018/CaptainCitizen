@@ -2,7 +2,7 @@ import React from 'react';
 import AddItemC from './../Components/addItem/AddItemC';
 import MapC from './../Components/map/MapC';
 
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 // const styles = {
 //   container: {
@@ -16,8 +16,8 @@ import {withStyles} from '@material-ui/core/styles';
 //   }
 // }
 
-const HomePV = (props) => {
-  const {classes} = props;
+const HomePV = props => {
+  const { classes } = props;
   return (
     <div>
       <div className={classes.container}>
