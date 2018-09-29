@@ -1,13 +1,13 @@
-import React, {Component} from 'react'
-import WebcamPicV from './WebcamPicV';
+import React, { Component } from "react";
+import WebcamPicV from "./WebcamPicV";
 
-export default class WebcamPicC extends Component{
-  constructor(props){
-    super(props)
+export default class WebcamPicC extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
-    image: null
-    }
+      image: null
+    };
   }
 
   setRef = webcam => {
@@ -16,16 +16,16 @@ export default class WebcamPicC extends Component{
 
   capture = () => {
     const imageSrc = this.webcam.getScreenshot();
-    this.setState({image: new Image().src=imageSrc});
+    this.setState({ image: (new Image().src = imageSrc) });
   };
 
   clear = () => {
-    this.setState({pic: null})
-  }
+    this.setState({ pic: null });
+  };
 
   keepImage = () => {
-    this.props.webcamImageCB(this.state.image)
-  }
+    this.props.webcamImageCB(this.state.image);
+  };
 
   render() {
     const videoConstraints = {
@@ -36,13 +36,13 @@ export default class WebcamPicC extends Component{
 
     return (
       <div>
-        <WebcamPicV 
-          setRef={ this.setRef }
-          videoConstraints={ videoConstraints }
+        <WebcamPicV
+          setRef={this.setRef}
+          videoConstraints={videoConstraints}
           capture={this.capture}
           keepImage={this.keepImage}
           image={this.state.image}
-          />
+        />
       </div>
     );
   }
