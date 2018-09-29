@@ -41,8 +41,8 @@ class AddItemC extends Component {
         }
       }
     } else {
-      for (var prop in this.state.issue_tags) {
-        if (this.state.issue_tags[prop]) {
+      for (var val in this.state.issue_tags) {
+        if (this.state.issue_tags[val]) {
           tags.push(prop);
         }
       }
