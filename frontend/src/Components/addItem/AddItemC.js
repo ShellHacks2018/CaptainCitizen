@@ -101,8 +101,7 @@ class AddItemC extends Component {
     }
 
     console.log(data)
-    axios.post(process.env.REACT_APP_MAPPOST_URL, data).then((res)=>{
-      console.log(res.body)
+    axios.post(process.env.REACT_APP_MAP_URL, data).then((res)=>{
     }).catch((err)=>{console.log(err)})
 
     // Post image to s3

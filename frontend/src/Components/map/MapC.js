@@ -1,80 +1,114 @@
 import React, {Component} from 'react'
 import MapV from './MapView.js'
 import {connect} from 'react-redux'
-import GetImageA from './../../Redux/Actions/GetImageA'
+import axios from 'axios'
+import MapItemA from './../../Redux/Actions/MapItemA'
+// import GetImageA from './../../Redux/Actions/GetImageA'
 
 
-var dummyData = [
-	{
-		"location": {"lat": 25.756085, "lng": -80.376185},
-		"title": "Temp A",
-		"image": "http://government.fiu.edu/_assets/images/main-banner/fiu-lake.jpg",
-		"created_by": "1",
-		"user_item": false,
-		"type": "post",
-		"tags": "food",
-		"created_date": "2018-09-15T21:28:47.324Z",
-		"rating": 1,
-	},
-	{
-		"location": {"lat": 25.759794, "lng": -80.371109},
-		"title": "Temp B",
-		"image": "https://images1.miaminewtimes.com/imager/u/745xauto/9814187/florida-international-university-fiu.jpg",
-		"created_by": "2",
-		"user_item": false,
-		"type": "post",
-		"tags": "illegal_dumping",
-		"created_date": "2018-09-15T21:28:47.324Z",
-		"rating": 1,
-	},
-	{
-		"location": {"lat": 25.756854, "lng": -80.371467},
-		"title": "Temp C",
-		"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW9535TF6VnAx-R1uTr8-GxVfERmfpQAyzFQlCAjxpWCjvx7IU",
-		"created_by": "3",
-		"user_item": false,
-		"type": "post",
-		"tags": "place",
-		"created_date": "2018-07-15T21:28:47.324Z",
-		"rating": 1,
-	},
-]
+// var dummyData = [
+// 	{
+// 		"location": {"lat": 25.756085, "lng": -80.376185},
+// 		"title": "Temp A",
+// 		"image": "http://government.fiu.edu/_assets/images/main-banner/fiu-lake.jpg",
+// 		"created_by": "1",
+// 		"user_item": false,
+// 		"type": "post",
+// 		"tags": "food",
+// 		"created_date": "2018-09-15T21:28:47.324Z",
+// 		"rating": 1,
+// 	},
+// 	{
+// 		"location": {"lat": 25.759794, "lng": -80.371109},
+// 		"title": "Temp B",
+// 		"image": "https://images1.miaminewtimes.com/imager/u/745xauto/9814187/florida-international-university-fiu.jpg",
+// 		"created_by": "2",
+// 		"user_item": false,
+// 		"type": "post",
+// 		"tags": "illegal_dumping",
+// 		"created_date": "2018-09-15T21:28:47.324Z",
+// 		"rating": 1,
+// 	},
+// 	{
+// 		"location": {"lat": 25.756854, "lng": -80.371467},
+// 		"title": "Temp C",
+// 		"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW9535TF6VnAx-R1uTr8-GxVfERmfpQAyzFQlCAjxpWCjvx7IU",
+// 		"created_by": "3",
+// 		"user_item": false,
+// 		"type": "post",
+// 		"tags": "place",
+// 		"created_date": "2018-07-15T21:28:47.324Z",
+// 		"rating": 1,
+// 	},
+// ]
 
 
 class MapC extends Component{
 	data = []
 	filterMapItems = []
-	imageData = new Image()
-	constructor(props){
-    super(props);
-		const {lat, lng} = this.props.initialCenter;
+	// imageData = new Image()
 
-    this.state = {
-      showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: {},
-      currentLocation: {
-        lat: lat,
-        lng: lng
+	constructor(props)
+	{
+    	super(props);
+		const {lat, lng} = this.props.initialCenter;
+		this.state = 
+		{
+			showingInfoWindow: false,
+			activeMarker: {},
+			activeMarkerProps: {},	// MapItem Model data as props object
+			markerImage: '',		// File retrieved from S3 when Marker clicked
+			currentLocation: 
+			{
+				lat: lat,
+				lng: lng
 			}
 		}
 	}
 
+	getImage = (fileName) => {
+		/**
+		*   Purpose: Send request to S3 via backend
+		*
+		* 	@param: fileName: String: Unique file name
+		* 	@state change: { markerImage: new File() } 
+		*/
+		let rurl = process.env.REACT_APP_DOWNLOD_URL+'/'+fileName
+		axios.get(rurl)
+		.then( (response) => 
+		{
+			// Base64 String -> Blob -> File
+			fetch(response.data)
+			.then(res => res.blob())
+			.then(blob => 
+				{
+					const file = new File([blob], fileName)
+					this.setState({markerImage: file});
+				})
+		})
+		.catch((err)=>{console.log(err);}) 
+	}
 
 	onMarkerClicked = (props, marker, e) => {
+		/**
+		 *  Purpose: Set state data for current Marker to use.
+		 * 
+		 * 	@param props Mapped from MapItems
+		 * 	@param marker 
+		 * 	@param e Click event object
+		 */
 		this.setState({
-			selectedPlace: props,
+			activeMarkerProps: props,
 			activeMarker: marker,
 			showingInfoWindow: true
 		});
 		// console.log(JSON.stringify(this.state.selectedPlace.image))
-		this.props.requestImg.getImg(this.state.selectedPlace.image);
-		this.imageData.src=this.props.imgState.img
-		// console.log("response: "+JSON.stringify(this.props.imgState))
+		this.getImage(props.image);
+		// this.imageData.src=this.state.markerImage;
 	}
 	
 
-	onMapClicked = (props) => {
+	onMapClicked = () => {
 		if (this.state.showingInfoWindow) {
 			this.setState({
 				showingInfoWindow: false,
@@ -102,17 +136,16 @@ class MapC extends Component{
 	}
 
 	updateUserItem = () => {
-		this.data = dummyData.map((item) => {
+		this.data = this.props.mapItems.map((item) => {
 			if(item.created_by === localStorage.getItem('userId')){
 				return {...item, user_item: true }
 			}
 			return item
 		})
-
 	}
 
 	filterMapItem = () => {
-		this.filterMapItems = dummyData.filter((item) => {
+		this.filterMapItems = this.props.mapItems.filter((item) => {
 			return this.props.filter.type === item.type
 		})
 		// console.log("filterMapItems:" + JSON.stringify(this.filterMapItems))
@@ -139,32 +172,35 @@ class MapC extends Component{
 		})
 		// console.log("filterMapItems:" + JSON.stringify(this.filterMapItems))
 	}
-
 	
-
-	componentDidMount(prevProp){
-		this.updateUserItem();
-		// this.filterMapItem();
+	componentDidMount(){
+		axios.get(process.env.REACT_APP_MAP_URL)
+		.then( (res) => { this.props.mapItemsA.getMapItems(res.data) })
+		.then( (res) => { this.updateUserItem(); })
+		.catch((err) => {console.log(err); })
+		  
 		
+		
+		// this.filterMapItem();
 	}
 
-  render(){
+  	render(){
 		this.getCurrentPosition();
 		// this.filterMapItem();
 		return(
 			<div>
 				<MapV google={this.props.google}
-							onMapClicked={this.onMapClicked}
-							center={this.state.currentLocation}
-							onMarkerClicked={this.onMarkerClicked}
-							currentLocation={this.state.currentLocation}
-							activeMarker={this.state.activeMarker}
-							showingInfoWindow={this.state.showingInfoWindow}
-							selectedPlaceName={this.state.selectedPlace.name}
-							selectedPlaceImg={this.state.selectedPlace.image}
-							selectedPlaceRating={this.state.selectedPlace.rating}
-							mapItems={dummyData}
-							userItem={this.state.selectedPlace.userItem} />
+					onMapClicked={this.onMapClicked}
+					center={this.state.currentLocation}
+					onMarkerClicked={this.onMarkerClicked}
+					currentLocation={this.state.currentLocation}
+					activeMarker={this.state.activeMarker}
+					showingInfoWindow={this.state.showingInfoWindow}
+					activeMarkerProps={this.state.activeMarkerProps}
+					markerImage={this.state.markerImage}
+					// selectedPlaceRating={this.state.selectedPlace.rating}
+					mapItems={this.filterMapItems}
+					userItem={this.state.activeMarkerProps.user_item} />
 			</div>
 		)
 	}
@@ -183,15 +219,15 @@ const mapStateToProps = state => {
 	return{
 		// mapItems: state.itemR.dummyMapItems
 		filter: state.FilterR,
-		imgState: state.ImageR
-		
+		mapItems: state.MapItemR.mapItems
 	}
 }
 
 const mapActionToProps = dispatch => {
 	return{
-		requestImg: GetImageA(dispatch)
+		mapItemsA: MapItemA(dispatch),
+		// requestImg: GetImageA(dispatch)
 	}
 }
 
-export default connect(mapStateToProps,mapActionToProps)(MapC)
+export default connect(mapStateToProps, mapActionToProps)(MapC)

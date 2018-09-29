@@ -2,14 +2,14 @@ import React from 'react'
 // import {gmap_key} from '../../config.js'
 import PropTypes from 'prop-types'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
-import image from '../../Assets/classRoom.jpg'
+// import image from '../../Assets/classRoom.jpg'
 
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles'
 // import DialogActions from '@material-ui/core/DialogActions'
 import CardMedia from '@material-ui/core/CardMedia'
 
-import Rating from 'react-rating'
+// import Rating from 'react-rating'
 
 import './index.css'
 
@@ -50,12 +50,18 @@ const styles = {
 
 const MapView = (props) => {
   const {classes} = props
-  const MapItems = props.mapItems
-  console.log(props.selectedPlaceImg)
+  // const MapItems = props.MapItems
+  console.log(props)
   return (
     <div>
-      <Map className='map' style={{margin: '15% 10%', height: '75%', width: '75%'}} google={props.google} onClick={props.onMapClicked} center={props.currentLocation} >
-        { MapItems.map(data => {
+      <Map className='map' 
+        style={{margin: '15% 10%', 
+        height: '75%', width: '75%'}} 
+        google={props.google} 
+        onClick={props.onMapClicked} 
+        center={props.currentLocation} >
+
+        { props.mapItems.map( (data) => {
           return (
             <Marker
               onClick={props.onMarkerClicked}
@@ -66,21 +72,36 @@ const MapView = (props) => {
               position={data.location} />
           )
         })}
-        <InfoWindow marker={props.activeMarker} visible={props.showingInfoWindow}>
+
+        <InfoWindow 
+            marker={props.activeMarker} 
+            visible={props.showingInfoWindow}>
           <div>
-            <h1 className={classes.titleCSS}>{props.selectedPlaceName}</h1>
-            <p>{console.log(props.selectedPlaceImg)}</p>
+            <h1 className={classes.titleCSS}>
+              {props.activeMarkerProps.title}
+            </h1>
+            {/* <p>{console.log(props.selectedPlaceImg)}</p> */}
           </div>
           {/* <img alt="..." src={props.selectedPlaceImg} />  */}
-          <CardMedia component='img' className={classes.imageCSS} image={image} title='Class PG6' />
-          <div className={classes.containerCSS}>
-            <Button variant='contained' className={classes.innerButtonCSS} > Cultural </Button>
-            <Button variant='contained' className={classes.innerButtonCSS} > Food </Button>
-          </div>
-          <div className={classes.containerCSS}>
+          <CardMedia component='img' 
+            className={classes.imageCSS} 
+            image={props.markerImage} 
+            title={props.activeMarkerProps.title} />
+
+          {/* <div className={classes.containerCSS}>
+            { props.activeMarkerProps.tags.map (
+              (tag) => {
+                return (<Button variant='contained' 
+                  className={classes.innerButtonCSS} > 
+                  {tag} </Button>)
+              })}
+          </div> */}
+
+          {/* <div className={classes.containerCSS}>
             <Rating className={classes.ratingCSS} />
-          </div>
+          </div> */}
         </InfoWindow>
+
       </Map>
     </div>
   )

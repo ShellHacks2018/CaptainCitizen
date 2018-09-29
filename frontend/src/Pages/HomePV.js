@@ -4,17 +4,17 @@ import MapC from './../Components/map/MapC'
 
 import { withStyles } from '@material-ui/core/styles'
 
-const styles = {
-  container: {
-    marginLeft: '40%',
-    marginRight: '25%',
-    marginBottom: '40%'
-  },
-  card: {
-    minWidth: '300px',
-    maxWidth: '345px'
-  }
-}
+// const styles = {
+//   container: {
+//     marginLeft: '40%',
+//     marginRight: '25%',
+//     marginBottom: '40%'
+//   },
+//   card: {
+//     minWidth: '300px',
+//     maxWidth: '345px'
+//   }
+// }
 
 const HomePV = (props) => {
   const {classes} = props

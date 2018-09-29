@@ -115,7 +115,6 @@ class GetImageC extends Component {
     this.setState({webcam_image: img})
 
     // Base64 String -> Blob -> File
-    // @todo: Better file naming!
     fetch(img)
     .then(res => res.blob())
     .then(blob => {
