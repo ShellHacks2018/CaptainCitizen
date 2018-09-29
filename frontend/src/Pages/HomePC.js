@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import HomePV from './HomePV';
+import React, { Component } from "react";
+import HomePV from "./HomePV";
 
 class LandingPC extends Component {
   constructor(props) {

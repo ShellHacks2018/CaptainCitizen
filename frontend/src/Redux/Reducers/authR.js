@@ -4,9 +4,9 @@ const initState = {
 
 function authR(state = initState, action) {
   switch (action.type) {
-    case 'LOGIN':
+    case "LOGIN":
       return { ...state, auth: true };
-    case 'LOGOUT':
+    case "LOGOUT":
       return { ...state, auth: false };
     default:
       return state;

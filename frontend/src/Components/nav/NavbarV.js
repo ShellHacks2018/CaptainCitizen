@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import { withStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 // import NavDrawer from './NavDrawer'
 
 const styles = {
   flex: {
     flexGrow: 1,
-    textAlign: 'left'
+    textAlign: "left"
   },
   menuButton: {
     marginLeft: -12,
@@ -24,7 +24,7 @@ const styles = {
     marginRight: 50
   },
   logoutButton: {
-    text: 'white'
+    text: "white"
   }
 };
 
@@ -35,8 +35,8 @@ const NavbarV = props => {
       <AppBar position="fixed" color="secondary">
         <Toolbar>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            {' '}
-            Profile{' '}
+            {" "}
+            Profile{" "}
           </Typography>
           <Link to="/">
             <Button
@@ -63,8 +63,8 @@ const NavbarV = props => {
       <AppBar position="fixed" color="secondary">
         <Toolbar>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            {' '}
-            Captain Citizen{' '}
+            {" "}
+            Captain Citizen{" "}
           </Typography>
           <IconButton
             className={classes.menuButton}

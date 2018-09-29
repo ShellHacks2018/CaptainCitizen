@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import LandingPV from './LandingPV';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import LandingPV from "./LandingPV";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
-import authA from '../Redux/Actions/authA';
+import authA from "../Redux/Actions/authA";
 
 /**
  * Landing Page Container
@@ -65,10 +65,10 @@ const landingPageState = state => {
 const landingPageAction = dispatch => {
   return {
     updateEmail: val => {
-      dispatch({ type: 'GET_EMAIL', val: val });
+      dispatch({ type: "GET_EMAIL", val: val });
     },
     updatePassword: val => {
-      dispatch({ type: 'GET_PASSWORD', val: val });
+      dispatch({ type: "GET_PASSWORD", val: val });
     },
     authFn: authA(dispatch)
   };

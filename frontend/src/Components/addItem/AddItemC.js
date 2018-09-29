@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
-import AddItemV from './AddItemV';
+import AddItemV from "./AddItemV";
 
 class AddItemC extends Component {
   state = {
     formOpen: false,
-    title: '',
-    selectedType: 'post',
-    image_form: '',
-    image_name: '',
+    title: "",
+    selectedType: "post",
+    image_form: "",
+    image_name: "",
     post_tags: {
       event: false,
       food: false,
@@ -22,8 +22,8 @@ class AddItemC extends Component {
       biohazard: false
     },
     currentLocation: {
-      lat: '',
-      lng: ''
+      lat: "",
+      lng: ""
     }
   };
 
@@ -34,7 +34,7 @@ class AddItemC extends Component {
   getTags = () => {
     // Used by GetImageC to create the file name
     let tags = [];
-    if (this.state.selectedType === 'post') {
+    if (this.state.selectedType === "post") {
       for (var prop in this.state.post_tags) {
         if (this.state.post_tags[prop]) {
           tags.push(prop);
@@ -87,12 +87,12 @@ class AddItemC extends Component {
     // post data to MapItems
     let data = {
       image: this.state.image_name,
-      title: document.getElementById('titleTF').value,
+      title: document.getElementById("titleTF").value,
       tags: this.getTags(),
       type: this.state.selectedType,
       user_item: false,
       created_date: new Date(),
-      created_by: localStorage.getItem('user').split('@')[0],
+      created_by: localStorage.getItem("user").split("@")[0],
       location: this.state.currentLocation,
       rating: 1
     };
@@ -150,14 +150,14 @@ class AddItemC extends Component {
   };
 
   render() {
-    let tags = '';
-    let checkClicked = '';
+    let tags = "";
+    let checkClicked = "";
 
-    if (this.state.selectedType === 'post') {
-      tags = this.state['post_tags'];
+    if (this.state.selectedType === "post") {
+      tags = this.state["post_tags"];
       checkClicked = this.postClicked;
     } else {
-      tags = this.state['issue_tags'];
+      tags = this.state["issue_tags"];
       checkClicked = this.issuesClicked;
     }
     return (

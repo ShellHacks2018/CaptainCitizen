@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import MapV from './MapView.js';
-import { connect } from 'react-redux';
-import axios from 'axios';
-import MapItemA from './../../Redux/Actions/MapItemA';
+import React, { Component } from "react";
+import MapV from "./MapView.js";
+import { connect } from "react-redux";
+import axios from "axios";
+import MapItemA from "./../../Redux/Actions/MapItemA";
 // import GetImageA from './../../Redux/Actions/GetImageA'
 
 // var dummyData = [
@@ -53,7 +53,7 @@ class MapC extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       activeMarkerProps: {}, // MapItem Model data as props object
-      markerImage: '', // File retrieved from S3 when Marker clicked
+      markerImage: "", // File retrieved from S3 when Marker clicked
       currentLocation: {
         lat: lat,
         lng: lng
@@ -68,7 +68,7 @@ class MapC extends Component {
      * 	@param: fileName: String: Unique file name
      * 	@state change: { markerImage: new File() }
      */
-    let rurl = process.env.REACT_APP_DOWNLOD_URL + '/' + fileName;
+    let rurl = process.env.REACT_APP_DOWNLOD_URL + "/" + fileName;
     axios
       .get(rurl)
       .then(response => {
@@ -130,7 +130,7 @@ class MapC extends Component {
 
   updateUserItem = () => {
     this.data = this.props.mapItems.map(item => {
-      if (item.created_by === localStorage.getItem('userId')) {
+      if (item.created_by === localStorage.getItem("userId")) {
         return { ...item, user_item: true };
       }
       return item;
@@ -144,19 +144,19 @@ class MapC extends Component {
     // console.log("filterMapItems:" + JSON.stringify(this.filterMapItems))
     this.filterMapItems = this.filterMapItems.filter(item => {
       switch (item.tags) {
-        case 'infrastructure':
+        case "infrastructure":
           return this.props.filter.infrastructure;
-        case 'dumping':
+        case "dumping":
           return this.props.filter.dumping;
-        case 'biohazard':
+        case "biohazard":
           return this.props.filter.biohazard;
-        case 'event':
+        case "event":
           return this.props.filter.event;
-        case 'food':
+        case "food":
           return this.props.filter.food;
-        case 'place':
+        case "place":
           return this.props.filter.place;
-        case 'cultural':
+        case "cultural":
           return this.props.filter.cultural;
         default:
           return false;

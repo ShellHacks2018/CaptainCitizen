@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
 const MapItemA = dispatch => {
   return {
     getMapItems: data => {
-      dispatch({ type: 'GET_MAPITEMS', mapItems: data });
+      dispatch({ type: "GET_MAPITEMS", mapItems: data });
     },
     postMapItem: data => {
       axios

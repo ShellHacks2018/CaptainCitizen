@@ -4,7 +4,7 @@ const initState = {
 
 function ImageR(state = initState, action) {
   switch (action.type) {
-    case 'GET_IMG':
+    case "GET_IMG":
       return { ...state, img: action.img };
     default:
       return state;

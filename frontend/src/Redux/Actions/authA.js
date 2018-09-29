@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 // import {reg_url, login_url} from '../../config.js'
 
 const authA = dispatch => {
@@ -15,10 +15,10 @@ const authA = dispatch => {
       axios
         .post(process.env.REACT_APP_LOGIN_URL, data)
         .then(res => {
-          localStorage.setItem('user', data.email);
-          localStorage.setItem('token', res.data.id);
-          localStorage.setItem('userId', res.data.userId);
-          dispatch({ type: 'LOGIN' });
+          localStorage.setItem("user", data.email);
+          localStorage.setItem("token", res.data.id);
+          localStorage.setItem("userId", res.data.userId);
+          dispatch({ type: "LOGIN" });
         })
         .catch(err => {
           console.log(err);
@@ -26,7 +26,7 @@ const authA = dispatch => {
     },
     logout: () => {
       localStorage.clear();
-      dispatch({ type: 'LOGOUT' });
+      dispatch({ type: "LOGOUT" });
     }
   };
 };

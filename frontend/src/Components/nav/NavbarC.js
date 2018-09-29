@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import NavbarV from './NavbarV';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import AuthA from './../../Redux/Actions/authA';
+import React, { Component } from "react";
+import NavbarV from "./NavbarV";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import AuthA from "./../../Redux/Actions/authA";
 
 class NavbarComponent extends Component {
   render() {

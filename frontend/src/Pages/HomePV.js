@@ -1,8 +1,8 @@
-import React from 'react';
-import AddItemC from './../Components/addItem/AddItemC';
-import MapC from './../Components/map/MapC';
+import React from "react";
+import AddItemC from "./../Components/addItem/AddItemC";
+import MapC from "./../Components/map/MapC";
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 
 // const styles = {
 //   container: {

@@ -1,6 +1,6 @@
-import React from 'react';
-import Webcam from 'react-webcam';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import Webcam from "react-webcam";
+import Button from "@material-ui/core/Button";
 
 const WebcamPicV = props => {
   if (props.image) {

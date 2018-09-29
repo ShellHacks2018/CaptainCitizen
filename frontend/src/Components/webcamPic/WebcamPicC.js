@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import WebcamPicV from './WebcamPicV';
+import React, { Component } from "react";
+import WebcamPicV from "./WebcamPicV";
 
 export default class WebcamPicC extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class WebcamPicC extends Component {
     const videoConstraints = {
       width: 1280,
       height: 720,
-      facingMode: 'user'
+      facingMode: "user"
     };
 
     return (

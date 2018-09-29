@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import WebcamPicC from '../webcamPic/WebcamPicC';
-import CameraIcon from '@material-ui/icons/CameraAlt';
-import PhotoIcon from '@material-ui/icons/Photo';
-import Paper from '@material-ui/core/Paper';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
+import WebcamPicC from "../webcamPic/WebcamPicC";
+import CameraIcon from "@material-ui/icons/CameraAlt";
+import PhotoIcon from "@material-ui/icons/Photo";
+import Paper from "@material-ui/core/Paper";
+import InputLabel from "@material-ui/core/InputLabel";
+import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
 
 const GetImageV = props => {
-  if (props.viewType === 'display_upload') {
+  if (props.viewType === "display_upload") {
     return (
       <div>
         <img
@@ -20,30 +20,30 @@ const GetImageV = props => {
         />
       </div>
     );
-  } else if (props.viewType === 'display_webcam') {
+  } else if (props.viewType === "display_webcam") {
     return (
       <div>
         <img alt="Your pic should be here!!!" src={props.webcam_image} />
       </div>
     );
-  } else if (props.viewType === 'upload') {
+  } else if (props.viewType === "upload") {
     return (
       <div>
         <Paper>
           <InputLabel>Select File</InputLabel>
           <Input color="primary" type="file" onChange={props.fileSelectedCB} />
           <Button color="primary" onClick={props.setUploadFileHandler}>
-            {' '}
-            Set{' '}
+            {" "}
+            Set{" "}
           </Button>
           <Button color="secondary" onClick={props.viewTypeCancel}>
-            {' '}
-            Cancel{' '}
+            {" "}
+            Cancel{" "}
           </Button>
         </Paper>
       </div>
     );
-  } else if (props.viewType === 'camera') {
+  } else if (props.viewType === "camera") {
     return (
       <div>
         <Paper>
@@ -52,8 +52,8 @@ const GetImageV = props => {
             webcamImageCB={props.webcamImageCB}
           />
           <Button color="secondary" onClick={props.viewTypeCancel}>
-            {' '}
-            Cancel{' '}
+            {" "}
+            Cancel{" "}
           </Button>
         </Paper>
       </div>
@@ -63,12 +63,12 @@ const GetImageV = props => {
       <div>
         <Paper>
           <Button color="primary" onClick={props.viewTypeUpload}>
-            {' '}
-            <PhotoIcon />{' '}
+            {" "}
+            <PhotoIcon />{" "}
           </Button>
           <Button color="primary" onClick={props.viewTypeCamera}>
-            {' '}
-            <CameraIcon />{' '}
+            {" "}
+            <CameraIcon />{" "}
           </Button>
         </Paper>
       </div>

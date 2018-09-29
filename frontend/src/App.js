@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import LandingPC from './Pages/LandingPC';
-import HomePC from './Pages/HomePC';
-import NavBarC from './Components/nav/NavbarC';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LandingPC from "./Pages/LandingPC";
+import HomePC from "./Pages/HomePC";
+import NavBarC from "./Components/nav/NavbarC";
 
 class App extends Component {
   render() {
