@@ -1,37 +1,37 @@
-import React from 'react';
-import AddIcon from '@material-ui/icons/Add';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Radio from '@material-ui/core/Radio';
-import FormGroup from '@material-ui/core/FormGroup';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import React from "react";
+import AddIcon from "@material-ui/icons/Add";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Radio from "@material-ui/core/Radio";
+import FormGroup from "@material-ui/core/FormGroup";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 
-import GetImageC from '../getImage/GetImageC';
+import GetImageC from "../getImage/GetImageC";
 
 const styles = theme => ({
   button: {
-    margin: '60% 10% 10% 90%'
+    margin: "60% 10% 10% 90%"
   },
   extendedIcon: {
     marginRight: theme.spacing.unit
   },
   root: {
-    display: 'flex'
+    display: "flex"
   },
   paper: {
     marginRight: theme.spacing.unit * 2
   },
-  '@media (max-width: 600px)': {
+  "@media (max-width: 600px)": {
     button: {}
   }
 });

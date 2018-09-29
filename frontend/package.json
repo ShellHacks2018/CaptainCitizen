@@ -23,21 +23,10 @@
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0"
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && cp -r build/* ../backend/client/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
