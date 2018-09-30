@@ -52,7 +52,8 @@ class MapC extends Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: false,
-      activeMarkerProps: false, // MapItem Model data as props object
+      activeMarkerProps: false, // MapItem Model data as props object,
+      //false so we can use it in teranary check
       markerImage: false, // File retrieved from S3 when Marker clicked
       currentLocation: {
         lat: lat,
@@ -103,6 +104,10 @@ class MapC extends Component {
      * 	@param marker
      * 	@param e Click event object
      */
+    console.log("onMarkerClicked");
+    console.log(props);
+    console.log(marker);
+    console.log(e);
     this.setState({
       activeMarkerProps: props,
       activeMarker: marker,

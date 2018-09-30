@@ -9,7 +9,7 @@ import { withStyles } from "@material-ui/core/styles";
 // import DialogActions from '@material-ui/core/DialogActions'
 import CardMedia from "@material-ui/core/CardMedia";
 
-// import Rating from 'react-rating'
+import Rating from "react-rating";
 
 import "./index.css";
 
@@ -102,9 +102,9 @@ const MapView = props => {
           />
 
           {console.log(this.activeMarkerProps)}
-          {/* <div className={classes.containerCSS}>
+          <div className={classes.containerCSS}>
             {props.activeMarkerProps
-              ? props.activeMarker.tags.map(tag => {
+              ? props.activeMarkerProps.tags.map(tag => {
                   return (
                     <Button
                       variant="contained"
@@ -115,11 +115,18 @@ const MapView = props => {
                   );
                 })
               : console.log("Empty props.activeMarkerProps")}
-          </div> */}
+          </div>
 
-          {/* <div className={classes.containerCSS}>
-            <Rating className={classes.ratingCSS} />
-          </div> */}
+          <div className={classes.containerCSS}>
+            {props.activeMarkerProps ? (
+              <Rating
+                className={classes.ratingCSS}
+                placeholderRating={props.activeMarkerProps.rating}
+              />
+            ) : (
+              console.log("Empty props.activeMarkerProps")
+            )}
+          </div>
         </InfoWindow>
       </Map>
     </div>
