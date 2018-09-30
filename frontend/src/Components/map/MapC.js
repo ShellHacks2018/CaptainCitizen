@@ -51,9 +51,9 @@ class MapC extends Component {
     const { lat, lng } = this.props.initialCenter;
     this.state = {
       showingInfoWindow: false,
-      activeMarker: {},
-      activeMarkerProps: {}, // MapItem Model data as props object
-      markerImage: "", // File retrieved from S3 when Marker clicked
+      activeMarker: false,
+      activeMarkerProps: false, // MapItem Model data as props object
+      markerImage: false, // File retrieved from S3 when Marker clicked
       currentLocation: {
         lat: lat,
         lng: lng
@@ -63,22 +63,32 @@ class MapC extends Component {
 
   getImage = fileName => {
     /**
-     *   Purpose: Send request to S3 via backend
+     *   Purpose: Called when a marker is clicked.
+     *
+     *    Send request to S3 via backend to get image as blob.
+     *    Convert blob into File(), then read File() as stream
+     *    with FileReader, then store it in state.markerImage
      *
      * 	@param: fileName: String: Unique file name
-     * 	@state change: { markerImage: new File() }
+     * 	@state: change: { markerImage: base64 }
      */
-    let rurl = process.env.REACT_APP_DOWNLOD_URL + "/" + fileName;
+    let rurl = process.env.REACT_APP_DOWNLOAD_URL + "/" + fileName;
+
     axios
-      .get(rurl)
+      .get(rurl, {
+        responseType: "blob" // VERY IMPORTANT!!!
+      })
       .then(response => {
-        // Base64 String -> Blob -> File
-        fetch(response.data)
-          .then(res => res.blob())
-          .then(blob => {
-            const file = new File([blob], fileName);
-            this.setState({ markerImage: file });
-          });
+        // Create new filereader
+        let reader = new FileReader();
+
+        // Decode the file data, aka blob
+        reader.readAsDataURL(new File([response.data], fileName));
+
+        // Add result attribute to event, and store it in state to display
+        reader.onload = event => {
+          this.setState({ markerImage: event.target.result });
+        };
       })
       .catch(err => {
         console.log(err);
@@ -172,7 +182,7 @@ class MapC extends Component {
         this.props.mapItemsA.getMapItems(res.data);
       })
       .then(res => {
-        this.updateUserItem();
+        // this.updateUserItem();
       })
       .catch(err => {
         console.log(err);
@@ -197,7 +207,7 @@ class MapC extends Component {
           activeMarkerProps={this.state.activeMarkerProps}
           markerImage={this.state.markerImage}
           // selectedPlaceRating={this.state.selectedPlace.rating}
-          mapItems={this.filterMapItems}
+          mapItems={this.props.mapItems}
           userItem={this.state.activeMarkerProps.user_item}
         />
       </div>
