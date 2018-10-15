@@ -198,6 +198,7 @@ class MapC extends Component {
 
   render() {
     this.getCurrentPosition();
+    console.log(this.props.mapItems);
     // this.filterMapItem();
     return (
       <div>
